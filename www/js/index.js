@@ -13,15 +13,14 @@ var app = {
         },
 
         selectChange: function() {
-            $('#warn_by').change(function () {
-                var optionSelected = $(this).find("option:selected");
-                if( optionSelected.val() === "0" ) {
-                    $("#div_email").show();
-                    $("#div_tel").hide();
-                } else {
-                    $("#div_email").hide();
-                    $("#div_tel").show();
-                }
+            $("input[type='radio']").bind( "change", function(event, ui) {
+              if( $('input[name=warn_by]:checked').val() === "0" ) {
+                  $("#div_email").show();
+                  $("#div_tel").hide();
+              } else {
+                  $("#div_email").hide();
+                  $("#div_tel").show();
+              }
             });
         },
 

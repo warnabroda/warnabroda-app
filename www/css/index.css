@@ -1,3 +1,18 @@
-#customHeader {
-     background-image: url('img/logo-warnabroda.png');
+.ui-title {
+  
+  color: #fff;
+}
+
+.ui-page-theme-a .ui-bar-inherit {
+	background-color: #b2be35 !important;
+}
+
+.ui-header .ui-title, .ui-footer .ui-title {
+  background-color: #b2be35;
+}
+
+.ui-input-btn input {
+	color: #61499a;
+	background-color: #61499a;
+	background: #61499a;
 }
