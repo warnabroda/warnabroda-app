@@ -1,3 +1,38 @@
+function onDeviceReady() {
+    // find all contacts
+    var options = new ContactFindOptions();
+    options.filter = "";
+    var filter = ["displayName", "addresses"];
+    navigator.contacts.find(filter, onSuccess, onError, options);
+}
+
+// onSuccess: Get a snapshot of the current contacts
+//
+function onSuccess(contacts) {
+    // display the address information for all contacts
+    for (var i = 0; i < contacts.length; i++) {
+      var html = contacts[i].displayName;
+        //for (var j = 0; j < contacts[i].addresses.length; j++) {
+            //var html = ("Pref: "           + contacts[i].addresses[j].pref          + "\n" +
+            //      "Type: "           + contacts[i].addresses[j].type          + "\n" +
+            //      "Formatted: "      + contacts[i].addresses[j].formatted     + "\n" +
+            //      "Street Address: " + contacts[i].addresses[j].streetAddress + "\n" +
+            //      "Locality: "       + contacts[i].addresses[j].locality      + "\n" +
+            //      "Region: "         + contacts[i].addresses[j].region        + "\n" +
+            //      "Postal Code: "    + contacts[i].addresses[j].postalCode    + "\n" +
+            //      "Country: "        + contacts[i].addresses[j].country);
+            //alert(html);
+        //}
+        $( "#con" ).append( html );
+    }
+};
+// onError: Failed to get the contacts
+//
+function onError(contactError) {
+    alert('onError!');
+}
+
+
 var app = {
 
         initialize: function() {
@@ -6,6 +41,12 @@ var app = {
             //    var the_height = ($(window).height() - $(this).find('[data-role="header"]').height() - $(this).find('[data-role="footer"]').height());
             //    $(this).height($(window).height()).find('[data-role="content"]').height(the_height);
             //});
+
+            // Wait for device API libraries to load
+            //
+            document.addEventListener("deviceready", onDeviceReady, false);
+            // device APIs are available
+            //
         },
 
         hideAllDivs: function() {

@@ -100,11 +100,11 @@
 
                     <input type="submit" data-icon="check" value="Enviar" data-theme="a">
                 </form>
+                <div id="con"></div>
 
             </div>
 
             <div data-role="footer">
-              <div id="con"></div>
             </div>
         </div>
         <script type="text/javascript" src="js/libs/jquery-1.11.3.min.js"></script>
@@ -113,44 +113,6 @@
         <script type="text/javascript" src="js/index.js"></script>
         <script type="text/javascript">
             app.initialize();
-        </script>
-        <script type="text/javascript" charset="utf-8">
-        // Wait for device API libraries to load
-        //
-        document.addEventListener("deviceready", onDeviceReady, false);
-        // device APIs are available
-        //
-        function onDeviceReady() {
-            // find all contacts
-            var options = new ContactFindOptions();
-            options.filter = "";
-            var filter = ["displayName", "addresses"];
-            navigator.contacts.find(filter, onSuccess, onError, options);
-        }
-        // onSuccess: Get a snapshot of the current contacts
-        //
-        function onSuccess(contacts) {
-            // display the address information for all contacts
-            for (var i = 0; i < contacts.length; i++) {
-                for (var j = 0; j < contacts[i].addresses.length; j++) {
-                    var html = ("Pref: "           + contacts[i].addresses[j].pref          + "\n" +
-                          "Type: "           + contacts[i].addresses[j].type          + "\n" +
-                          "Formatted: "      + contacts[i].addresses[j].formatted     + "\n" +
-                          "Street Address: " + contacts[i].addresses[j].streetAddress + "\n" +
-                          "Locality: "       + contacts[i].addresses[j].locality      + "\n" +
-                          "Region: "         + contacts[i].addresses[j].region        + "\n" +
-                          "Postal Code: "    + contacts[i].addresses[j].postalCode    + "\n" +
-                          "Country: "        + contacts[i].addresses[j].country);
-                    alert(html);
-                    $( "#con" ).append( "<p>Test</p>" );
-                }
-            }
-        };
-        // onError: Failed to get the contacts
-        //
-        function onError(contactError) {
-            alert('onError!');
-        }
         </script>
     </body>
 </html>
