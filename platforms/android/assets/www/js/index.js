@@ -11,7 +11,7 @@ function onDeviceReady() {
 function onSuccess(contacts) {
     // display the address information for all contacts
     for (var i = 0; i < contacts.length; i++) {
-      var html = contacts[i].displayName;
+      var html = contacts[i].displayName + "</br>";
         //for (var j = 0; j < contacts[i].addresses.length; j++) {
             //var html = ("Pref: "           + contacts[i].addresses[j].pref          + "\n" +
             //      "Type: "           + contacts[i].addresses[j].type          + "\n" +
@@ -29,7 +29,7 @@ function onSuccess(contacts) {
 // onError: Failed to get the contacts
 //
 function onError(contactError) {
-    alert('onError!');
+    $( "#con" ).append( contactError + "</br>" );
 }
 
 
