@@ -2,7 +2,8 @@ function onDeviceReady() {
     // find all contacts
     var options = new ContactFindOptions();
     options.filter = "";
-    filter = ["displayName", "name"];
+    options.multiple = true;
+    var fields = ["displayName", "name", "addresses", "emails"];
     navigator.contacts.find(filter, onSuccess, onError, options);
 }
 
@@ -41,38 +42,38 @@ function onError(contactError) {
 
 var app = {
 
-        initialize: function() {
-            $(document).off('pageshow').on('pageshow', '#main-page', this.bindEvents);
-            //$(document).delegate('#page_name', 'pageshow', function () {
-            //    var the_height = ($(window).height() - $(this).find('[data-role="header"]').height() - $(this).find('[data-role="footer"]').height());
-            //    $(this).height($(window).height()).find('[data-role="content"]').height(the_height);
-            //});
+  initialize: function() {
+      $(document).off('pageshow').on('pageshow', '#main-page', this.bindEvents);
+      //$(document).delegate('#page_name', 'pageshow', function () {
+      //    var the_height = ($(window).height() - $(this).find('[data-role="header"]').height() - $(this).find('[data-role="footer"]').height());
+      //    $(this).height($(window).height()).find('[data-role="content"]').height(the_height);
+      //});
 
-            // Wait for device API libraries to load
-            //
-            document.addEventListener("deviceready", onDeviceReady, false);
-            // device APIs are available
-            //
-        },
+      // Wait for device API libraries to load
+      //
+      document.addEventListener("deviceready", onDeviceReady, false);
+      // device APIs are available
+      //
+  },
 
-        hideAllDivs: function() {
+  hideAllDivs: function() {
+      $("#div_email").hide();
+  },
+
+  selectChange: function() {
+      $("input[type='radio']").bind( "change", function(event, ui) {
+        if( $('input[name=warn_by]:checked').val() === "0" ) {
+            $("#div_email").show();
+            $("#div_tel").hide();
+        } else {
             $("#div_email").hide();
-        },
-
-        selectChange: function() {
-            $("input[type='radio']").bind( "change", function(event, ui) {
-              if( $('input[name=warn_by]:checked').val() === "0" ) {
-                  $("#div_email").show();
-                  $("#div_tel").hide();
-              } else {
-                  $("#div_email").hide();
-                  $("#div_tel").show();
-              }
-            });
-        },
-
-        bindEvents: function() {
-           app.hideAllDivs();
-           app.selectChange();
+            $("#div_tel").show();
         }
-    };
+      });
+  },
+
+  bindEvents: function() {
+     app.hideAllDivs();
+     app.selectChange();
+  }
+};
