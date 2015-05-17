@@ -35,7 +35,13 @@
         <div data-role="page" id = "main-page">
 
             <div data-role="header">
-                <h1>Warn a Broda</h1>
+              <h1>Warn a Broda</h1>
+              <div data-role="navbar">
+                <ul>
+                  <li><a href="index.html#main-page" class="ui-btn-active">One</a></li>
+                  <li><a href="index.html#bar">Two</a></li>
+                </ul>
+              </div><!-- /navbar -->
             </div>
 
             <div role="main" class="ui-content">
@@ -100,13 +106,38 @@
 
                     <input type="submit" data-icon="check" value="Enviar" data-theme="a">
                 </form>
-                <div id="con"></div>
 
             </div>
 
             <div data-role="footer">
             </div>
         </div>
+
+
+
+
+        <!-- Start of second page -->
+        <div data-role="page" id="bar">
+
+          <div data-role="header">
+            <h1>Warn a Broda</h1>
+            <div data-role="navbar">
+              <ul>
+                <li><a href="index.html#main-page" class="ui-btn-active">One</a></li>
+                <li><a href="index.html#bar">Two</a></li>
+              </ul>
+            </div><!-- /navbar -->
+          </div>
+
+          <div role="main" class="ui-content">
+            <div id="con"></div>
+          </div><!-- /content -->
+
+          <div data-role="footer">
+            <h4>Page Footer</h4>
+          </div><!-- /footer -->
+        </div><!-- /page -->
+
         <script type="text/javascript" src="js/libs/jquery-1.11.3.min.js"></script>
         <script type="text/javascript" src="js/libs/jquery.mobile.custom.min.js"></script>
         <script type="text/javascript" src="cordova.js"></script>

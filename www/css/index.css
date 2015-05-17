@@ -16,3 +16,9 @@
 	background-color: #61499a;
 	background: #61499a;
 }
+
+.ui-page-theme-a .ui-btn.ui-btn-active {
+	background-color: #b2be35 !important;
+	border-color: #b2be35 !important;
+	box-shadow: 0 0 12px #b2be35 !important;
+}
