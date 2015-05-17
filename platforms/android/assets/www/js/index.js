@@ -2,7 +2,7 @@ function onDeviceReady() {
     // find all contacts
     var options = new ContactFindOptions();
     options.filter = "";
-    var filter = ["displayName", "addresses"];
+    filter = ["displayName", "name"];
     navigator.contacts.find(filter, onSuccess, onError, options);
 }
 
@@ -11,7 +11,7 @@ function onDeviceReady() {
 function onSuccess(contacts) {
     // display the address information for all contacts
     for (var i = 0; i < contacts.length; i++) {
-      var html = contacts[i].displayName + "</br>";
+      //var html = contacts[i].displayName + "</br>";
         //for (var j = 0; j < contacts[i].addresses.length; j++) {
             //var html = ("Pref: "           + contacts[i].addresses[j].pref          + "\n" +
             //      "Type: "           + contacts[i].addresses[j].type          + "\n" +
@@ -23,6 +23,12 @@ function onSuccess(contacts) {
             //      "Country: "        + contacts[i].addresses[j].country);
             //alert(html);
         //}
+        var html = ("Formatted: "    + contacts[i].name.formatted       + "</br>" +
+                    "Family Name: "  + contacts[i].name.familyName      + "</br>" +
+                    "Given Name: "   + contacts[i].name.givenName       + "</br>" +
+                    "Middle Name: "  + contacts[i].name.middleName      + "</br>" +
+                    "Suffix: "       + contacts[i].name.honorificSuffix + "</br>" +
+                    "Prefix: "       + contacts[i].name.honorificSuffix);
         $( "#con" ).append( html );
     }
 };
