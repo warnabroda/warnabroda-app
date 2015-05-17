@@ -4,7 +4,7 @@ function onDeviceReady() {
     options.filter = "";
     options.multiple = true;
     var fields = ["displayName", "name", "addresses", "emails"];
-    navigator.contacts.find(filter, onSuccess, onError, options);
+    navigator.contacts.find(fields, onSuccess, onError, options);
 }
 
 // onSuccess: Get a snapshot of the current contacts
