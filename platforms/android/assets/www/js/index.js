@@ -13,11 +13,7 @@ function onSuccess(contacts) {
     // display the address information for all contacts
     for (var i = 0; i < contacts.length; i++) {
         var html = ("Formatted: "    + contacts[i].name.formatted       + "</br>" +
-                    "Family Name: "  + contacts[i].name.familyName      + "</br>" +
-                    "Given Name: "   + contacts[i].name.givenName       + "</br>" +
-                    "Middle Name: "  + contacts[i].name.middleName      + "</br>" +
-                    "Suffix: "       + contacts[i].name.honorificSuffix + "</br>" +
-                    "Prefix: "       + contacts[i].name.honorificSuffix + "</br>");
+                    "------------------------------------------------------</br>" +);
         $( "#con" ).append( html );
     }
 };
