@@ -11,9 +11,11 @@ function onDeviceReady() {
 //
 function onSuccess(contacts) {
     // display the address information for all contacts
+    var con = $( "#con" );
     for (var i = 0; i < contacts.length; i++) {
-        $( "#con" ).append( "<li><a href='#''>"    + contacts[i].name.formatted       + "</a></li>" );
+        con.append( "<li><a href='#'' id='con_" + contacts[i].id + "'>"    + contacts[i].name.formatted     + " | " + contacts[i].phoneNumbers  "<img border='0' alt='" + contacts[i].photos[0] + "' src='ogo_w3s.gif' width='100' height='100'></a></li>" );
     }
+    con.listview( "refresh" );
 };
 // onError: Failed to get the contacts
 //
