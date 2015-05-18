@@ -12,9 +12,7 @@ function onDeviceReady() {
 function onSuccess(contacts) {
     // display the address information for all contacts
     for (var i = 0; i < contacts.length; i++) {
-        var html = ("Formatted: "    + contacts[i].name.formatted       + "</br>" +
-                    "------------------------------------------------------</br>" +);
-        $( "#con" ).append( html );
+        $( "#con" ).append( "<li><a href='#''>"    + contacts[i].name.formatted       + "</a></li>" );
     }
 };
 // onError: Failed to get the contacts
