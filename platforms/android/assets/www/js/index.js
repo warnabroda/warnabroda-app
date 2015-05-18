@@ -14,7 +14,7 @@ function onSuccess(contacts) {
     var con = $( "#con" );
     for (var i = 0; i < contacts.length; i++) {
       if(contacts[i].phoneNumbers != null) {
-        con.append( "<li><a href='#'' id='con_" + contacts[i].id + "'>"    + contacts[i].name.formatted     + " | " + contacts[i].phoneNumbers[0] + " | " contacts[i].phoneNumbers.size );
+        con.append( "<li><a href='#'' id='con_" + contacts[i].id + "'>"    + contacts[i].name.formatted     + " | " + contacts[i].phoneNumbers[0] + " | " + contacts[i].phoneNumbers.size );
       }
     }
     con.listview( "refresh" );
