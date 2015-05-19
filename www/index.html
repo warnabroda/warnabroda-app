@@ -35,7 +35,7 @@
         <div data-role="page" id = "main-page">
 
           <div data-role="tabs" id="tabs">
-            
+
             <div data-role="header">
               <h1>Warn a Broda</h1>
               <div data-role="navbar">
@@ -54,39 +54,7 @@
 
                   <form id="warnForm" action="http://Xispe-PC:3000/warns/" method="post">
 
-                      <label for="warn" class="select">Warn</label>
-                      <select name="warn" id="warn">
-                          <option value="?" selected="selected"></option>
-                          <option value="0">Alguém lhe recomendou usar o serviço de aviso anônimo</option>
-                          <option value="1">Eu sei que você peidou</option>
-                          <option value="2">Mas que mesa bagunçada hein</option>
-                          <option value="3">Não é seu aniversário, mas você tá de parabéns ;)</option>
-                          <option value="4">Não gostei da sua atitude</option>
-                          <option value="5">O barulho dos pés e/ou mãos incomodam</option>
-                          <option value="6">O seu vaso sanitário está sujo de cocô</option>
-                          <option value="7">Relaxa, você está muito estressado(a)</option>
-                          <option value="8">Sou um(a) admirador(a) secreto(a)</option>
-                          <option value="9">Sua menstruação manchou sua roupa</option>
-                          <option value="10">Te acho muito metido(a)</option>
-                          <option value="11">Teu cofrinho tá aparecendo</option>
-                          <option value="12">Teu som tá muito alto. Poderia diminuir por favor?</option>
-                          <option value="13">Tua roupa tá do lado avesso</option>
-                          <option value="14">Você é um péssimo motorista, pelo menos aprenda a estacionar direito</option>
-                          <option value="15">Você está com a maquiagem borrada!</option>
-                          <option value="16">Você está com mau hálito</option>
-                          <option value="17">Você está com o ziper aberto</option>
-                          <option value="18">Você está com odor de suor</option>
-                          <option value="19">Você está fazendo um barulho irritante com a boca</option>
-                          <option value="20">Você não é um bom chefe</option>
-                          <option value="21">Você reclama demais</option>
-                          <option value="22">Você tá com ramela nos olhos</option>
-                          <option value="23">Você tá com um chulezinho hein</option>
-                          <option value="24">Você tá muito linda, tá judiando do meu coração</option>
-                          <option value="25">Você tá um gato, to de olho hein, se liga</option>
-                          <option value="26">Você tem caca no nariz</option>
-                          <option value="27">Você tem sujeira nos dentes</option>
-                          <option value="28">Você tem um odiador(a) secreto(a)</option>
-                      </select>
+                      <div id="warn_div"></div>
 
                       <fieldset data-role="controlgroup">
                         <legend>Warn via:</legend>
@@ -115,7 +83,7 @@
               </div>
 
               <div id="two">
-                <div id="output_contacts"></div>               
+                <div id="output_contacts"></div>
               </div>
             </div>
 
@@ -136,9 +104,18 @@
             {{#each contacts_list}}
               {{#if phoneNumbers != null}}
                 <li><a href="#" id="{{id}}" on-click='activate' name="{{displayName}}" tel="{{#each phoneNumbers}} {{#if pref}} {{value}} {{/if}} {{/each}}">{{displayName}} |  {{#each phoneNumbers}} Tel: {{value}} Tipo: {{type}} {{/each}}</a></li>
-              {{/if}} 
+              {{/if}}
             {{/each}}
           </ul>
+        </script>
+        <script id='template_warns' type='text/ractive'>
+          <label for="warn" class="select">Warn</label>
+          <select name="warn" id="warn">
+              <option value="?" selected="selected"></option>
+              {{#each warns_list}}
+                <option value="{{id}}">{{text}}</option>
+              {{/each}}
+          </select>
         </script>
         <script type="text/javascript">
             app.initialize();

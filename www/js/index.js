@@ -29,6 +29,13 @@ function onError(contactError) {
     $( "#con" ).append( contactError + "</br>" );
 }
 
+var start_warns = function() {
+  $.getJSON("jsons/warns.json")
+  .done(function(data) {
+    console.log(data);
+  });
+};
+
 
 var app = {
 
@@ -47,6 +54,7 @@ var app = {
     //
 
     forms();
+    start_warns();
   },
 
   hideAllDivs: function() {
@@ -76,7 +84,7 @@ var forms = function() {
   $( "#warnForm" ).submit(function( event ) {
     // Stop form from submitting normally
     event.preventDefault();
-   
+
     // Get some values from elements on the page:
     var $form = $( this ),
       warn_val = $form.find( "#warn" ).val(),
@@ -87,10 +95,10 @@ var forms = function() {
       url = $form.attr( "action" );
 
     $.ajax({
-      url: url, 
-      type: 'POST', 
-      contentType: 'application/json', 
-      data: JSON.stringify({warn: warn_val, email: email_val, tel: tel_val, warn_by: warn_by_val})    
+      url: url,
+      type: 'POST',
+      contentType: 'application/json',
+      data: JSON.stringify({warn: warn_val, email: email_val, tel: tel_val, warn_by: warn_by_val})
     });
   });
 };
@@ -106,4 +114,3 @@ var height_content = function() {
   var content = screen - header - footer - contentCurrent;
   $(".ui-content").height(content);
 }
-
