@@ -15,8 +15,12 @@ function onSuccess(contacts) {
       template: '#template_li_contacts',
       data: { contacts_list: contacts },
       oncomplete: function () {
-        $( this.find('#con') ).listview( "refresh" );
+        $('#con').listview();
       }
+    });
+
+    ractive.on( 'activate', function ( event ) {
+      $( "#tel" ).val($(event.node).attr("tel"));
     });
 };
 // onError: Failed to get the contacts
