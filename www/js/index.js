@@ -17,7 +17,7 @@ function onSuccess(contacts) {
       }
     }
 
-    ractive = new Ractive({
+    var ractive = new Ractive({
       el: "#output_contacts",
       template: '#template_li_contacts',
       data: { contacts_list: contacts }
