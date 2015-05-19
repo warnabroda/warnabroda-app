@@ -135,7 +135,7 @@
           <ul id="con" data-role="listview">
             {{#each contacts_list}}
               {{#if phoneNumbers != null}}
-                <li><a href="#" id="{{id}}">{{displayName}} | {{phoneNumbers.value}}</a></li>
+                <li><a href="#" id="{{id}}">{{displayName}} |  {{#each phoneNumbers}} Tel: {{value}} Tipo: {{type}} {{/each}}</a></li>
               {{/if}} 
             {{/each}}
           </ul>

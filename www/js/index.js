@@ -10,22 +10,14 @@ function onDeviceReady() {
 // onSuccess: Get a snapshot of the current contacts
 //
 function onSuccess(contacts) {
-    // display the address information for all contacts
-    for (var i = 0; i < contacts.length; i++) {
-      if(contacts[i].phoneNumbers != null) {
-        //con.append( );
-      }
-    }
-
     var ractive = new Ractive({
       el: "#output_contacts",
       template: '#template_li_contacts',
       data: { contacts_list: contacts },
       oncomplete: function () {
-        $( "#con" ).listview( "refresh" );
+        $( this.find('#con') ).listview( "refresh" );
       }
     });
-    
 };
 // onError: Failed to get the contacts
 //
