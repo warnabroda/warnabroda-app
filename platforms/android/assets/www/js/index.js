@@ -20,9 +20,12 @@ function onSuccess(contacts) {
     var ractive = new Ractive({
       el: "#output_contacts",
       template: '#template_li_contacts',
-      data: { contacts_list: contacts }
+      data: { contacts_list: contacts },
+      oncomplete: function () {
+        $( "#con" ).listview( "refresh" );
+      }
     });
-    $( "#con" ).listview( "refresh" );
+    
 };
 // onError: Failed to get the contacts
 //
