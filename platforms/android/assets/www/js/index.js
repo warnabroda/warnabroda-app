@@ -11,13 +11,18 @@ function onDeviceReady() {
 //
 function onSuccess(contacts) {
     // display the address information for all contacts
-    var con = $( "#con" );
     for (var i = 0; i < contacts.length; i++) {
       if(contacts[i].phoneNumbers != null) {
-        con.append( "<li><a href='#'' id='con_" + contacts[i].id + "'>"    + contacts[i].name.formatted     + " | " + contacts[i].phoneNumbers[0] + " | " + contacts[i].phoneNumbers.size );
+        //con.append( );
       }
     }
-    con.listview( "refresh" );
+
+    ractive = new Ractive({
+      el: "#output_contacts",
+      template: '#template_li_contacts',
+      data: { contacts_list: contacts }
+    });
+    $( "#con" ).listview( "refresh" );
 };
 // onError: Failed to get the contacts
 //

@@ -115,9 +115,7 @@
               </div>
 
               <div id="two">
-                <ul id="con" data-role="listview">
-                  
-                </ul>
+                <div id="output_contacts"></div>               
               </div>
             </div>
 
@@ -129,8 +127,17 @@
 
         <script type="text/javascript" src="js/libs/jquery-1.11.3.min.js"></script>
         <script type="text/javascript" src="js/libs/jquery.mobile.custom.min.js"></script>
+        <script type="text/javascript" src="js/libs/ractive.min.js"></script>
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
+
+        <script id='template_li_contacts' type='text/ractive'>
+          <ul id="con" data-role="listview">
+            {{#each contacts_list}}
+              <li><a href="#" id="{{id}}">{{displayName}} | {{phoneNumbers}}</a></li>   
+            {{/each}}
+          </ul>
+        </script>
         <script type="text/javascript">
             app.initialize();
         </script>
