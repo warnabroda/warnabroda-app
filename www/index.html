@@ -50,11 +50,12 @@
 
                 <div id="one" class="ui-body-d ui-content">
 
-                  <img src="img/logo-warnabroda.png" />
+
+                  <img src="img/logo-warnabroda.png" class="displayed"  />
 
                   <form id="warnForm" action="http://Xispe-PC:3000/warns/" method="post">
 
-                      <div id="warn_div"></div>
+                      <div id="output_warn"></div>
 
                       <fieldset data-role="controlgroup">
                         <legend>Warn via:</legend>
@@ -76,7 +77,7 @@
                           <input type="tel" name="tel" id="tel" value="" placeholder="(11) 96123-4567">
                       </div>
 
-                      <input type="submit" data-icon="check" value="Enviar" data-theme="a">
+                      <input type="submit" data-icon="check" value="Enviar" data-wrapper-class="green-btn">
                   </form>
                 </div>
 
@@ -97,13 +98,15 @@
         <script type="text/javascript" src="js/libs/jquery.mobile.custom.min.js"></script>
         <script type="text/javascript" src="js/libs/ractive.min.js"></script>
         <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/warns.js"></script>
+        <script type="text/javascript" src="js/ractive_componentes.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
 
         <script id='template_li_contacts' type='text/ractive'>
           <ul id="con" data-role="listview">
             {{#each contacts_list}}
               {{#if phoneNumbers != null}}
-                <li><a href="#" id="{{id}}" on-click='activate' name="{{displayName}}" tel="{{#each phoneNumbers}} {{#if pref}} {{value}} {{/if}} {{/each}}">{{displayName}} |  {{#each phoneNumbers}} Tel: {{value}} Tipo: {{type}} {{/each}}</a></li>
+                <li><a href="#" target="one" id="{{id}}" on-click='activate' name="{{displayName}}" tel="{{#each phoneNumbers}} {{#if pref}} {{value}} {{/if}} {{/each}}">{{displayName}} |  {{#each phoneNumbers}} Tel: {{value}} Tipo: {{type}} {{/each}}</a></li>
               {{/if}}
             {{/each}}
           </ul>

@@ -10,51 +10,23 @@ function onDeviceReady() {
 // onSuccess: Get a snapshot of the current contacts
 //
 function onSuccess(contacts) {
-    var ractive = new Ractive({
-      el: "#output_contacts",
-      template: '#template_li_contacts',
-      data: { contacts_list: contacts },
-      oncomplete: function () {
-        $('#con').listview();
-      }
-    });
-
-    ractive.on( 'activate', function ( event ) {
-      $( "#tel" ).val($(event.node).attr("tel"));
-    });
+  ractive_componentes.contacts(contacts);
 };
 // onError: Failed to get the contacts
 //
 function onError(contactError) {
-    $( "#con" ).append( contactError + "</br>" );
+  $( "#con" ).append( contactError + "</br>" );
 }
-
-var start_warns = function() {
-  $.getJSON("jsons/warns.json")
-  .done(function(data) {
-    console.log(data);
-  });
-};
-
 
 var app = {
 
   initialize: function() {
     height_content();
     $(document).off('pageshow').on('pageshow', '#main-page', this.bindEvents);
-    //$(document).delegate('#page_name', 'pageshow', function () {
-    //    var the_height = ($(window).height() - $(this).find('[data-role="header"]').height() - $(this).find('[data-role="footer"]').height());
-    //    $(this).height($(window).height()).find('[data-role="content"]').height(the_height);
-    //});
-
-    // Wait for device API libraries to load
-    //
     document.addEventListener("deviceready", onDeviceReady, false);
-    // device APIs are available
-    //
 
     forms();
-    start_warns();
+    ractive_componentes.warns(warns);
   },
 
   hideAllDivs: function() {
