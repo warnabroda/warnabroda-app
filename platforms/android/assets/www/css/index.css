@@ -22,3 +22,20 @@
 	border-color: #b2be35 !important;
 	box-shadow: 0 0 12px #b2be35 !important;
 }
+
+.ui-input-btn.green-btn {
+	background-color: #b2be35!important;
+	border-color: #b2be35!important;
+	box-shadow: 0 0 12px #b2be35!important;
+}
+
+.ui-input-btn.green-btn:hover {
+	background-color: #61499a!important;
+	border-color: #61499a!important;
+	box-shadow: 0 0 12px #61499a!important;
+}
+
+IMG.displayed {
+    display: block;
+    margin-left: auto;
+    margin-right: auto }
