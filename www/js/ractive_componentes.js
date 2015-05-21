@@ -19,6 +19,7 @@ var ractive_componentes = {
 
     ractive.on( 'activate', function ( event ) {
       $( "#tel" ).val($(event.node).attr("tel"));
+      $("[data-role=panel]").panel("close");
     });
   }
 };
