@@ -20,6 +20,9 @@ var ractive_componentes = {
     ractive.on( 'activate', function ( event ) {
       $( "#tel" ).val($(event.node).attr("tel"));
       $("[data-role=panel]").panel("close");
+      var tab = $('a[href="index.html#tab1"]');
+      tab.trigger("click");
+      tab.addClass("ui-btn-active");
     });
   }
 };

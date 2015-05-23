@@ -27,6 +27,8 @@ var app = {
 
     forms();
     ractive_componentes.warns(warns);
+
+
   },
 
   hideAllDivs: function() {
@@ -48,6 +50,7 @@ var app = {
   bindEvents: function() {
      app.hideAllDivs();
      app.selectChange();
+     $('.ui-btn-active').click();
   }
 };
 

@@ -34,41 +34,63 @@
     <body>
         <div data-role="page" id = "main-page">
 
+          <div data-role="tabs" id="tabs">
+
           <div data-role="header">
             <h1>Warn a Broda</h1>
+            <a href="#" data-icon="gear" class="ui-btn-right">Options</a>
+            <div data-role="navbar" id="navbar">
+              <ul>
+                <li><a href="index.html#tab2" >Conversas</a></li>
+                <li><a href="index.html#tab1" class="ui-btn-active">Home</a></li>
+                <li><a href="index.html#tab3" >Contatos</a></li>
+              </ul>
+            </div><!-- /navbar -->
           </div>
 
           <div role="main" class="ui-content">
 
-            <img src="img/logo-warnabroda.png" class="displayed"  />
+            <div id="tab1">
 
-            <form id="warnForm" action="http://Xispe-PC:3000/warns/" method="post">
+              <img src="img/logo-warnabroda.png" class="displayed"  />
 
-              <div id="output_warn"></div>
+              <form id="warnForm" action="http://Xispe-PC:3000/warns/" method="post">
 
-              <fieldset data-role="controlgroup">
-                <legend>Warn via:</legend>
-                <input type="radio" name="warn_by" id="warn_by_1" value="0"/>
-                <label for="warn_by_1">E-mail</label>
-                <input type="radio" name="warn_by" id="warn_by_2" value="1"/>
-                <label for="warn_by_2">SMS</label>
-                <input type="radio" name="warn_by" id="warn_by_3" value="2" checked="checked"/>
-                <label for="warn_by_3">WhatsApp</label>
-              </fieldset>
+                <div id="output_warn"></div>
 
-              <div id="div_email" style="overflow:hidden;">
-                  <label for="email">Text input:</label>
-                  <input type="text" name="email" id="email" value="" placeholder="Ex: warnabroda@gmail.com">
-              </div>
+                <fieldset data-role="controlgroup">
+                  <legend>Warn via:</legend>
+                  <input type="radio" name="warn_by" id="warn_by_1" value="0"/>
+                  <label for="warn_by_1">E-mail</label>
+                  <input type="radio" name="warn_by" id="warn_by_2" value="1"/>
+                  <label for="warn_by_2">SMS</label>
+                  <input type="radio" name="warn_by" id="warn_by_3" value="2" checked="checked"/>
+                  <label for="warn_by_3">WhatsApp</label>
+                </fieldset>
 
-              <div id="div_tel" style="overflow:hidden;">
-                  <label for="tel">Contato:</label>
-                  <input type="tel" name="tel" id="tel" value="" placeholder="(11) 96123-4567">
-              </div>
+                <div id="div_email" style="overflow:hidden;">
+                    <label for="email">Text input:</label>
+                    <input type="text" name="email" id="email" value="" placeholder="Ex: warnabroda@gmail.com">
+                </div>
 
-              <a href="#mypanel" data-display="push" class="ui-btn">Contatos</a>
-              <input type="submit" data-icon="check" value="Enviar" data-wrapper-class="green-btn">
-            </form>
+                <div id="div_tel" style="overflow:hidden;">
+                    <label for="tel">Contato:</label>
+                    <input type="tel" name="tel" id="tel" value="" placeholder="(11) 96123-4567">
+                </div>
+
+                <a href="#mypanel" data-display="push" class="ui-btn">Contatos</a>
+                <input type="submit" data-icon="check" value="Enviar" data-wrapper-class="green-btn">
+              </form>
+            </div>
+            <div id="tab2">
+              tab2
+            </div>
+            <div id="tab3">
+              <div id="output_contacts"></div>
+            </div>
+
+          </div>
+
           </div>
 
           <div data-role="footer">
@@ -94,7 +116,7 @@
           <ul id="con" data-role="listview">
             {{#each contacts_list}}
               {{#if phoneNumbers != null}}
-                <li><a href="#" id="{{id}}" on-click='activate' name="{{displayName}}" tel='{{#each phoneNumbers}} {{#if type == "mobile"}} {{value}} {{/if}} {{/each}}'>{{displayName}} |  {{#each phoneNumbers}} {{#if type == "mobile"}} Tel: {{value}} Tipo: {{type}} {{/if}} {{/each}} | {{type}} </a></li>
+                <li><a href="index.html#tab1" id="{{id}}" on-click='activate' name="{{displayName}}" tel='{{#each phoneNumbers}} {{#if type == "mobile"}} {{value}} {{/if}} {{/each}}'>{{displayName}} |  {{#each phoneNumbers}} {{#if type == "mobile"}} Tel: {{value}} Tipo: {{type}} {{/if}} {{/each}} | {{type}} </a></li>
               {{/if}}
             {{/each}}
           </ul>
