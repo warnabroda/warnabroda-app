@@ -1,22 +1,22 @@
-function onDeviceReady() {
+var onDeviceReady = function() {
     // find all contacts
     var options = new ContactFindOptions();
     options.filter = "";
     options.multiple = true;
     var fields = ["displayName", "name", "addresses", "emails"];
     navigator.contacts.find(fields, onSuccess, onError, options);
-}
+};
 
 // onSuccess: Get a snapshot of the current contacts
 //
-function onSuccess(contacts) {
+var onSuccess = function(contacts) {
   ractive_componentes.contacts(contacts);
 };
 // onError: Failed to get the contacts
 //
-function onError(contactError) {
-  $( "#con" ).append( contactError + "</br>" );
-}
+var onError = function(contactError) {
+  console.log(contactError);
+};
 
 var app = {
 
@@ -27,8 +27,6 @@ var app = {
 
     forms();
     ractive_componentes.warns(warns);
-
-
   },
 
   hideAllDivs: function() {

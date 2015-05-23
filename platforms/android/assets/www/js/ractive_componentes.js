@@ -7,7 +7,7 @@ var ractive_componentes = {
     });
   },
 
-  contacts:  function() {
+  contacts:  function(contacts) {
     var ractive = new Ractive({
       el: "#output_contacts",
       template: '#template_li_contacts',

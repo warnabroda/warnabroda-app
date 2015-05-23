@@ -78,7 +78,6 @@
                     <input type="tel" name="tel" id="tel" value="" placeholder="(11) 96123-4567">
                 </div>
 
-                <a href="#mypanel" data-display="push" class="ui-btn">Contatos</a>
                 <input type="submit" data-icon="check" value="Enviar" data-wrapper-class="green-btn">
               </form>
             </div>
@@ -96,11 +95,6 @@
           <div data-role="footer">
             <h4>Page Footer</h4>
           </div><!-- /footer -->
-
-          <div data-role="panel" data-position="right" id="mypanel">
-            <a href="#demo-links" data-rel="close" class="ui-btn ui-shadow ui-corner-all ui-btn-a ui-icon-delete ui-btn-icon-left ui-btn-inline">Close panel</a>
-            <div id="output_contacts"></div>
-          </div><!-- /panel -->
         </div>
 
 
@@ -116,7 +110,7 @@
           <ul id="con" data-role="listview">
             {{#each contacts_list}}
               {{#if phoneNumbers != null}}
-                <li><a href="index.html#tab1" id="{{id}}" on-click='activate' name="{{displayName}}" tel='{{#each phoneNumbers}} {{#if type == "mobile"}} {{value}} {{/if}} {{/each}}'>{{displayName}} |  {{#each phoneNumbers}} {{#if type == "mobile"}} Tel: {{value}} Tipo: {{type}} {{/if}} {{/each}} | {{type}} </a></li>
+                <li><a href="#" id="{{id}}" on-click='activate' name="{{displayName}}" tel='{{#each phoneNumbers}} {{#if type == "mobile"}} {{value}} {{/if}} {{/each}}'>{{displayName}} |  {{#each phoneNumbers}} {{#if type == "mobile"}} Tel: {{value}} Tipo: {{type}} {{/if}} {{/each}} | {{type}} </a></li>
               {{/if}}
             {{/each}}
           </ul>
