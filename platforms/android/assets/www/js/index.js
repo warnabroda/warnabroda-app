@@ -1,3 +1,17 @@
+function alertCarrier() {
+  var succ = function (data) {
+    alert(data['carrierName']);
+    alert(data['countryCode']);
+    alert(data['mcc']);
+    alert(data['mnc']);
+  };
+  var err = function () {
+    alert('Error!');
+  };
+  window.plugins.carrier.getCarrierInfo(succ, err)
+};
+
+
 var onDeviceReady = function() {
     // find all contacts
     var options = new ContactFindOptions();
@@ -24,6 +38,7 @@ var app = {
     height_content();
     $(document).off('pageshow').on('pageshow', '#main-page', this.bindEvents);
     document.addEventListener("deviceready", onDeviceReady, false);
+    document.addEventListener('deviceready', alertCarrier, false);
 
     forms();
     ractive_componentes.warns(warns);

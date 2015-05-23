@@ -14,5 +14,13 @@
         },
         "is_top_level": true,
         "variables": {}
+    },
+    "br.com.dtmtec.plugins.carrier": {
+        "source": {
+            "type": "registry",
+            "id": "br.com.dtmtec.plugins.carrier"
+        },
+        "is_top_level": true,
+        "variables": {}
     }
 }
