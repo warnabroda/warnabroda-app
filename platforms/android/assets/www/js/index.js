@@ -25,6 +25,7 @@ var onDeviceReady = function() {
 //
 var onSuccess = function(contacts) {
   ractive_componentes.contacts(contacts);
+  ractive_componentes.emails(contacts);
 };
 // onError: Failed to get the contacts
 //

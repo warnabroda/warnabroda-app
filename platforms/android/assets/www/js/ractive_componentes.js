@@ -24,5 +24,13 @@ var ractive_componentes = {
       tab.trigger("click");
       tab.addClass("ui-btn-active");
     });
+  },
+
+  emails: function(contacts) {
+    var ractive = new Ractive({
+      el: "#output_emails",
+      template: '#template_emails',
+      data: { contacts_list: contacts }
+    });
   }
 };
