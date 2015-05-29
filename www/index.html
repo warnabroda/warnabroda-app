@@ -37,7 +37,7 @@
 
           <div data-role="header">
             <h1 style="text-align:left; margin-left:10px;">Warn a Broda</h1>
-            <a href="#" data-icon="gear" class="ui-btn-right">&nbsp</a>
+            <a href="#" data-icon="gear" class="ui-btn-right green-btn">&nbsp</a>
             <div data-role="navbar" id="navbar">
               <ul>
                 <li><a href="index.html#tab2" >Conversas</a></li>
@@ -121,6 +121,11 @@
                 <option value="{{id}}">{{text}}</option>
               {{/each}}
           </select>
+        </script>
+        <script id='template_emails' type='text/ractive'>
+          {{#each contacts_list}}
+            <div>{{emails}}</div></br>
+          {{/each}}
         </script>
         <script type="text/javascript">
             app.initialize();
