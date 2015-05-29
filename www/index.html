@@ -124,7 +124,7 @@
         </script>
         <script id='template_emails' type='text/ractive'>
           {{#each contacts_list}}
-            <div>{{emails}}</div></br>
+            <div> {{#each emails}} {{value}} | {{/each}}</div></br>
           {{/each}}
         </script>
         <script type="text/javascript">

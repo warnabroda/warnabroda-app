@@ -9,8 +9,8 @@ var ems = [
 { type: 'home',   value: '203-555-7890', pref: false }
 ];
 var contacts = [
- {id: 1, displayName: "teste",  phoneNumbers :pns, emails:  },
- {id: 2, displayName: "teste 2",  phoneNumbers :pns, emails:  }
+ {id: 1, displayName: "teste",  phoneNumbers :pns, emails: ems },
+ {id: 2, displayName: "teste 2",  phoneNumbers :pns, emails: ems  }
 ];
 
 
