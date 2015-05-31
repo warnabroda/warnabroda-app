@@ -14,5 +14,29 @@
         },
         "is_top_level": true,
         "variables": {}
+    },
+    "br.com.dtmtec.plugins.carrier": {
+        "source": {
+            "type": "registry",
+            "id": "br.com.dtmtec.plugins.carrier"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "cordova-plugin-console": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-console"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "cordova-plugin-network-information": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-network-information"
+        },
+        "is_top_level": true,
+        "variables": {}
     }
 }

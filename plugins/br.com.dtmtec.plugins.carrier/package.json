@@ -1,0 +1,23 @@
+{
+    "version": "1.0.0",
+    "name": "br.com.dtmtec.plugins.carrier",
+    "cordova_name": "Carrier",
+    "description": "A plugin to get the device's carrier name, mcc mnc, and country code",
+    "license": "MIT",
+    "keywords": [
+        "cordova",
+        "carrier",
+        "mcc",
+        "mnc"
+    ],
+    "platforms": [
+        "ios",
+        "android"
+    ],
+    "engines": [
+        {
+            "name": "cordova",
+            "version": ">=3.0.0"
+        }
+    ]
+}
