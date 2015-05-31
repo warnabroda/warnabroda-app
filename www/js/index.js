@@ -1,9 +1,9 @@
 function alertCarrier() {
   var succ = function (data) {
-    alert(data['carrierName']);
-    alert(data['countryCode']);
-    alert(data['mcc']);
-    alert(data['mnc']);
+    console.log(data['carrierName']);
+    console.log(data['countryCode']);
+    console.log(data['mcc']);
+    console.log(data['mnc']);
   };
   var err = function () {
     alert('Error!');
@@ -41,7 +41,7 @@ var app = {
     document.addEventListener('deviceready', alertCarrier, false);
 
     forms();
-    ractive_componentes.warns(warns);
+    Ajax.initialize();
   },
 
   hideAllDivs: function() {

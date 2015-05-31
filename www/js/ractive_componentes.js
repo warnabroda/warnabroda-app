@@ -3,7 +3,21 @@ var ractive_componentes = {
     var ractive = new Ractive({
       el: "#output_warn",
       template: '#template_warns',
-      data: { warns_list: warns }
+      data: { warns_list: warns },
+      oncomplete: function () {
+        $('#con').listview();
+      }
+    });
+  },
+
+  warn_bies: function(warn_bies) {
+    var ractive = new Ractive({
+      el: "#output_warn_bies",
+      template: '#template_warn_bies',
+      data: { warn_bies_list: warn_bies },
+      oncomplete: function () {
+        $("input[type='radio']").checkboxradio().checkboxradio("refresh");
+      }
     });
   },
 

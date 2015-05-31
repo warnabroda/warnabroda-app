@@ -1,9 +1,11 @@
 cordova.define('cordova/plugin_list', function(require, exports, module) {
 module.exports = [
     {
-        "file": "plugins/cordova-plugin-whitelist/whitelist.js",
-        "id": "cordova-plugin-whitelist.whitelist",
-        "runs": true
+        "file": "plugins/br.com.dtmtec.plugins.carrier/www/carrier.js",
+        "id": "br.com.dtmtec.plugins.carrier.Carrier",
+        "clobbers": [
+            "window.plugins.carrier"
+        ]
     },
     {
         "file": "plugins/cordova-plugin-contacts/www/contacts.js",
@@ -69,19 +71,17 @@ module.exports = [
         ]
     },
     {
-        "file": "plugins/br.com.dtmtec.plugins.carrier/www/carrier.js",
-        "id": "br.com.dtmtec.plugins.carrier.Carrier",
-        "clobbers": [
-            "window.plugins.carrier"
-        ]
+        "file": "plugins/cordova-plugin-whitelist/whitelist.js",
+        "id": "cordova-plugin-whitelist.whitelist",
+        "runs": true
     }
 ];
 module.exports.metadata = 
 // TOP OF METADATA
 {
-    "cordova-plugin-whitelist": "1.0.0",
+    "br.com.dtmtec.plugins.carrier": "1.0.0",
     "cordova-plugin-contacts": "1.0.0",
-    "br.com.dtmtec.plugins.carrier": "1.0.0"
+    "cordova-plugin-whitelist": "1.0.0"
 }
 // BOTTOM OF METADATA
 });
