@@ -12,6 +12,7 @@ function alertCarrier() {
 };
 
 
+
 var onDeviceReady = function() {
     // find all contacts
     var options = new ContactFindOptions();
@@ -37,10 +38,10 @@ var app = {
 
   initialize: function() {
     Ajax.initialize();
+    network_information.initialize();
     $(document).off('pageshow').on('pageshow', '#main-page', this.bindEvents);
     document.addEventListener("deviceready", onDeviceReady, false);
     document.addEventListener('deviceready', alertCarrier, false);
-    forms();
   },
 
   hideAllDivs: function() {
