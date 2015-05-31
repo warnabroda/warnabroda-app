@@ -26,7 +26,7 @@ var Ajax = {
           url:  Env.url + "warns.json",
           type: 'POST',
           contentType: 'application/json',
-          data: JSON.stringify({warn: warn_val, email: email_val, tel: tel_val, warn_by: warn_by_val})
+          data: JSON.stringify({authenticity_token: "t2oO5K+SXC3PuPNX2hgXbwbP/4nATIJicWF1gvQEQks=", warn: warn_val, email: email_val, tel: tel_val, warn_by: warn_by_val})
         });
       });
     }
