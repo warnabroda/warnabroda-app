@@ -3,7 +3,30 @@ var ractive_componentes = {
     var ractive = new Ractive({
       el: "#output_warn",
       template: '#template_warns',
-      data: { warns_list: warns }
+      data: { warns_list: warns },
+      oncomplete: function () {
+        $("select").selectmenu().selectmenu("refresh");
+      }
+    });
+  },
+
+  warn_bies: function(warn_bies) {
+    var ractive = new Ractive({
+      el: "#output_warn_bies",
+      template: '#template_warn_bies',
+      data: { warn_bies_list: warn_bies },
+      oncomplete: function () {
+        $("input[type='radio']").checkboxradio().checkboxradio("refresh");
+        $("input[type='radio']").bind( "change", function(event, ui) {
+          if( $('input[name=warn_by]:checked').val() === "1" ) {
+              $("#div_email").show();
+              $("#div_tel").hide();
+          } else {
+              $("#div_email").hide();
+              $("#div_tel").show();
+          }
+        });
+      }
     });
   },
 

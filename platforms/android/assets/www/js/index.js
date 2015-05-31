@@ -1,9 +1,9 @@
 function alertCarrier() {
   var succ = function (data) {
-    alert(data['carrierName']);
-    alert(data['countryCode']);
-    alert(data['mcc']);
-    alert(data['mnc']);
+    console.log(data['carrierName']);
+    console.log(data['countryCode']);
+    console.log(data['mcc']);
+    console.log(data['mnc']);
   };
   var err = function () {
     alert('Error!');
@@ -36,12 +36,11 @@ var onError = function(contactError) {
 var app = {
 
   initialize: function() {
+    Ajax.initialize();
     $(document).off('pageshow').on('pageshow', '#main-page', this.bindEvents);
     document.addEventListener("deviceready", onDeviceReady, false);
     document.addEventListener('deviceready', alertCarrier, false);
-
     forms();
-    ractive_componentes.warns(warns);
   },
 
   hideAllDivs: function() {
@@ -49,15 +48,7 @@ var app = {
   },
 
   selectChange: function() {
-      $("input[type='radio']").bind( "change", function(event, ui) {
-        if( $('input[name=warn_by]:checked').val() === "0" ) {
-            $("#div_email").show();
-            $("#div_tel").hide();
-        } else {
-            $("#div_email").hide();
-            $("#div_tel").show();
-        }
-      });
+      
   },
 
   bindEvents: function() {

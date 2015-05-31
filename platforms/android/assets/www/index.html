@@ -57,15 +57,7 @@
 
                 <div id="output_warn"></div>
 
-                <fieldset data-role="controlgroup">
-                  <legend>Warn via:</legend>
-                  <input type="radio" name="warn_by" id="warn_by_1" value="0"/>
-                  <label for="warn_by_1">E-mail</label>
-                  <input type="radio" name="warn_by" id="warn_by_2" value="1"/>
-                  <label for="warn_by_2">SMS</label>
-                  <input type="radio" name="warn_by" id="warn_by_3" value="2" checked="checked"/>
-                  <label for="warn_by_3">WhatsApp</label>
-                </fieldset>
+                <div id="output_warn_bies"></div>
 
                 <div id="div_email" style="overflow:hidden;">
                     <label for="email">Text input:</label>
@@ -101,6 +93,8 @@
         <script type="text/javascript" src="js/libs/ractive.min.js"></script>
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="js/warns.js"></script>
+        <script type="text/javascript" src="js/env.js"></script>
+        <script type="text/javascript" src="js/ajax.js"></script>
         <script type="text/javascript" src="js/ractive_componentes.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
 
@@ -118,7 +112,7 @@
           <select name="warn" id="warn">
               <option value="?" selected="selected"></option>
               {{#each warns_list}}
-                <option value="{{id}}">{{text}}</option>
+                <option value="{{id}}">{{name}}</option>
               {{/each}}
           </select>
         </script>
@@ -126,6 +120,15 @@
           {{#each contacts_list}}
             <div> {{#each emails}} {{value}} | {{/each}}</div></br>
           {{/each}}
+        </script>
+        <script id='template_warn_bies' type='text/ractive'>
+          <fieldset data-role="controlgroup">
+            <legend>Warn via:</legend>
+            {{#each warn_bies_list}}
+              <input type="radio" name="warn_by" id="warn_by_{{id}}" value="{{id}}" {{#if checked}} checked="checked" {{/if}}/>
+              <label for="warn_by_{{id}}">{{label}}</label>
+            {{/each}}
+          </fieldset>
         </script>
         <script type="text/javascript">
             app.initialize();

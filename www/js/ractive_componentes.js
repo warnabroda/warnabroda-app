@@ -17,6 +17,15 @@ var ractive_componentes = {
       data: { warn_bies_list: warn_bies },
       oncomplete: function () {
         $("input[type='radio']").checkboxradio().checkboxradio("refresh");
+        $("input[type='radio']").bind( "change", function(event, ui) {
+          if( $('input[name=warn_by]:checked').val() === "1" ) {
+              $("#div_email").show();
+              $("#div_tel").hide();
+          } else {
+              $("#div_email").hide();
+              $("#div_tel").show();
+          }
+        });
       }
     });
   },
