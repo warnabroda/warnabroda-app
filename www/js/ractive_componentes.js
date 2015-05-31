@@ -5,7 +5,7 @@ var ractive_componentes = {
       template: '#template_warns',
       data: { warns_list: warns },
       oncomplete: function () {
-        $('#con').listview();
+        $("select").selectmenu().selectmenu("refresh");
       }
     });
   },
