@@ -48,7 +48,7 @@ var app = {
   },
 
   selectChange: function() {
-      
+
   },
 
   bindEvents: function() {
@@ -56,28 +56,4 @@ var app = {
      app.selectChange();
      $('.ui-btn-active').click();
   }
-};
-
-
-var forms = function() {
-  $( "#warnForm" ).submit(function( event ) {
-    // Stop form from submitting normally
-    event.preventDefault();
-
-    // Get some values from elements on the page:
-    var $form = $( this ),
-      warn_val = $form.find( "#warn" ).val(),
-      email_val = $form.find( "#email" ).val(),
-      tel_val = $form.find( "#tel" ).val(),
-      warn_by_val = $form.find( '#select[name="warn_by"] option:selected' ).val(),
-
-      url = $form.attr( "action" );
-
-    $.ajax({
-      url: url,
-      type: 'POST',
-      contentType: 'application/json',
-      data: JSON.stringify({warn: warn_val, email: email_val, tel: tel_val, warn_by: warn_by_val})
-    });
-  });
 };
