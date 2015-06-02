@@ -37,7 +37,7 @@
 
           <div data-role="header">
             <h1 style="text-align:left; margin-left:10px;">Warn a Broda</h1>
-            <a href="#" data-icon="gear" class="ui-btn-right green-btn">&nbsp</a>
+            <a href="#options" class="ui-btn ui-btn-right ui-icon-bars ui-btn-icon-notext ui-corner-all">No text</a>
             <div data-role="navbar" id="navbar">
               <ul>
                 <li><a href="index.html#tab2" >Conversas</a></li>
@@ -85,6 +85,27 @@
 
           <div data-role="footer">
           </div><!-- /footer -->
+        </div>
+
+        <div data-role="page" id="options">
+
+          <div data-role="header">
+            <h1 style="text-align:left; margin-left:10px;">Warn a Broda</h1>
+            <a href="#main-page" class="ui-btn ui-btn-right ui-icon-carat-l ui-btn-icon-notext ui-corner-all">No text</a>
+          </div>
+
+          <div role="main" class="ui-content">
+            <fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
+              <legend>Language:</legend>
+                  <input type="radio" name="language" id="language-c" value="pt-br" checked="checked">
+                  <label for="language-c">Português</label>
+                  <input type="radio" name="language" id="language-d" value="en">
+                  <label for="language-d">Inglês</label>
+                  <input type="radio" name="language" id="language-e" value="es">
+                  <label for="language-e">Espanhol</label>
+          </fieldset>
+        	</div><!-- /content -->
+
         </div>
 
 
