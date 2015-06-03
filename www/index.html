@@ -41,7 +41,7 @@
             <div data-role="navbar" id="navbar">
               <ul>
                 <li><a href="index.html#tab2" >Conversas</a></li>
-                <li><a href="index.html#tab1" class="ui-btn-active">Home</a></li>
+                <li><a href="index.html#tab1" class="ui-btn-active home">Home</a></li>
                 <li><a href="index.html#tab3" >Contatos</a></li>
               </ul>
             </div><!-- /navbar -->
@@ -91,7 +91,7 @@
 
           <div data-role="header">
             <h1 style="text-align:left; margin-left:10px;">Warn a Broda</h1>
-            <a href="#main-page" class="ui-btn ui-btn-right ui-icon-carat-l ui-btn-icon-notext ui-corner-all">No text</a>
+            <a href="#main-page" class="ui-btn ui-btn-right ui-icon-carat-l ui-btn-icon-notext ui-corner-all back-home">No text</a>
           </div>
 
           <div role="main" class="ui-content">
@@ -139,8 +139,9 @@
           </select>
         </script>
         <script id='template_emails' type='text/ractive'>
+          E-mail
           {{#each contacts_list}}
-            <div> {{#each emails}} {{value}} | {{/each}}</div></br>
+            <div> {{#each emails}} {{value}} | {{/each}}</div>
           {{/each}}
         </script>
         <script id='template_warn_bies' type='text/ractive'>

@@ -1,13 +1,20 @@
 var Ajax = {
   get: {
     warn_bies: function() {
-      $.getJSON(Env.url + "warn_bies.json", function(data) {
+      $.getJSON(Env.url + "warn_bies.json").done(function(data) {
         ractive_componentes.warn_bies(data);
+      }).fail(function() {
+        ractive_componentes.warn_bies(Env.default_vars.warn_bies);
+        console.log( "error" );
       });
     },
     warns: function() {
-      $.getJSON(Env.url + "warns.json", function(data) {
+      var language = $( "input[name='language']:checked" ).val();
+      $.getJSON(Env.url + "warns.json", {lang_key: language}).done(function(data) {
         ractive_componentes.warns(data);
+      }).fail(function() {
+        ractive_componentes.warns(Env.default_vars.warns);
+        console.log( "error" );
       });
     }
   },

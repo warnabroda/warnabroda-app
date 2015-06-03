@@ -42,6 +42,11 @@ var app = {
     $(document).off('pageshow').on('pageshow', '#main-page', this.bindEvents);
     document.addEventListener("deviceready", onDeviceReady, false);
     document.addEventListener('deviceready', alertCarrier, false);
+    $(".back-home").click(function() {
+      var tab = $('a[href="index.html#tab1"]');
+      tab.trigger("click");
+      tab.addClass("ui-btn-active");
+    });
   },
 
   hideAllDivs: function() {

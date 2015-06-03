@@ -13,7 +13,7 @@ var contacts = [
  {id: 2, displayName: "teste 2",  phoneNumbers :pns, emails: ems  }
 ];
 
-
+ractive_componentes.emails(contacts);
 
 
 
