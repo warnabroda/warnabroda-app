@@ -1,8 +1,8 @@
 var Ajax = {
   get: {
-    warn_bies: function() {
-      $.getJSON(Env.url + "warn_bies.json").done(function(data) {
-        ractive_componentes.warn_bies(data);
+    contact_types: function() {
+      $.getJSON(Env.url + "contact_types").done(function(data) {
+        ractive_componentes.contact_types(data);
       }).fail(function() {
         ractive_componentes.warn_bies(Env.default_vars.warn_bies);
         console.log( "error" );
@@ -10,7 +10,7 @@ var Ajax = {
     },
     warns: function() {
       var language = $( "input[name='language']:checked" ).val();
-      $.getJSON(Env.url + "warns.json", {lang_key: language}).done(function(data) {
+      $.getJSON(Env.url + "messages/" + language).done(function(data) {
         ractive_componentes.warns(data);
       }).fail(function() {
         ractive_componentes.warns(Env.default_vars.warns);
@@ -39,7 +39,7 @@ var Ajax = {
     }
   },
   initialize: function() {
-    this.get.warn_bies();
+    this.get.contact_types();
     this.get.warns();
     this.post.warn();
   }

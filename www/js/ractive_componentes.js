@@ -10,7 +10,7 @@ var ractive_componentes = {
     });
   },
 
-  warn_bies: function(warn_bies) {
+  contact_types: function(warn_bies) {
     var ractive = new Ractive({
       el: "#output_warn_bies",
       template: '#template_warn_bies',

@@ -1,9 +1,9 @@
 function alertCarrier() {
   var succ = function (data) {
-    console.log(data['carrierName']);
-    console.log(data['countryCode']);
-    console.log(data['mcc']);
-    console.log(data['mnc']);
+    //alert(data['carrierName']);
+    //alert(data['countryCode']);
+    //alert(data['mcc']);
+    //alert(data['mnc']);
   };
   var err = function () {
     alert('Error!');
@@ -48,7 +48,7 @@ var app = {
       tab.addClass("ui-btn-active");
     });
 
-    $( "input[name='language']" ).change(Ajax.get.warns)
+    $( "input[name='language']" ).change(Ajax.get.warns);
   },
 
   hideAllDivs: function() {
