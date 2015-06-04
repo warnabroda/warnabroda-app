@@ -47,6 +47,8 @@ var app = {
       tab.trigger("click");
       tab.addClass("ui-btn-active");
     });
+
+    $( "input[name='language']" ).change(Ajax.get.warns)
   },
 
   hideAllDivs: function() {

@@ -18,13 +18,12 @@ var network_information = {
 
   onOnline: function() {
       // Handle the online event
-      alert("online");
-      this.checkConnection();
+      // alert("online");
   },
 
   onOffline: function() {
       // Handle the offline event
-      alert("Offline");
+      // alert("Offline");
   },
 
   initialize: function() {
