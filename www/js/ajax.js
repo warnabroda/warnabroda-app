@@ -30,11 +30,7 @@ var Ajax = {
           warn_by_val = $form.find( '#select[name="warn_by"] option:selected' ).val(),
           language = $( "input[name='language']:checked" ).val();
 
-        $.ajax({
-          url:  Env.url + "warnings",
-          type: 'POST',
-          contentType: 'application/json',
-          data: JSON.stringify({browser: "Android",
+          var params = JSON.stringify({browser: "Android",
                                 contact: tel_val ? email_val : tel_val,
                                 created_date: "2015-06-05T20:56:10.271Z",
                                 device: "Android",
@@ -46,12 +42,15 @@ var Ajax = {
                                 operating_system: "linux",
                                 raw: "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/41.0.2272.76 Chrome/41.0.2272.76 Safari/537.36",
                                 timezone: "180",
-                                warning_resp: {}})
-        });
+                                warning_resp: {}});
+          var first_cb = function(data) {
+            alert(data);
+          };
 
-
-
-
+          var done_cb = function(data) {
+            alert(data);
+          };
+          $.post(Env.url + "warnings", params, first_cb).done(done_cb);
 
       });
     }
