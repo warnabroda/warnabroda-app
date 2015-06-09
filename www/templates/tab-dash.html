@@ -22,21 +22,21 @@
         <div ng-show="warning.id_contact_type === 1">
           <label class="item item-input">
             <span class="input-label">Email</span>
-            <input type="email" ng-model="email" placeholder="Ex: warnabroda@gmail.com">
+            <input type="email" ng-model="data.email" placeholder="Ex: warnabroda@gmail.com">
           </label>
         </div>
 
         <div ng-show="warning.id_contact_type === 2">
           <label class="item item-input">
             <span class="input-label">Telephone</span>
-            <input type="tel" ng-model="sms" placeholder="+55 (98) 9916-0205">
+            <input type="tel" ng-model="data.sms" placeholder="+55 (98) 9916-0205">
           </label>
         </div>
 
         <div ng-show="warning.id_contact_type === 3">
           <label class="item item-input">
             <span class="input-label">Telephone</span>
-            <input type="tel" ng-model="whatsapp" placeholder="+55 (98) 9916-0205">
+            <input type="tel" ng-model="data.whatsapp" placeholder="+55 (98) 9916-0205">
           </label>
         </div>
 

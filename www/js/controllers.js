@@ -14,6 +14,12 @@ angular.module('starter.controllers', [])
     lang_key: "pt-br"
   };
 
+  $scope.data = {
+    sms: "",
+    whatsapp: "",
+    email: ""
+  };
+
   var listContactType = WarningService.getContactTypes();
   listContactType.then(function(result) {
     if (result) {
@@ -79,23 +85,16 @@ angular.module('starter.controllers', [])
 			}
 		};
 
-    $scope.$watch('sms', function(value, oldValue) {
-
-
-        $scope.warning.contact = String(value);
-
+    $scope.$watch('data.sms', function(value, oldValue, scope) {
+      $scope.warning.contact = String(value);
     });
 
-    $scope.$watch('whatsapp', function(value, oldValue) {
-
-        $scope.warning.contact = String(value);
-
+    $scope.$watch('data.whatsapp', function(value, oldValue, scope) {
+      $scope.warning.contact = String(value);
     });
 
-    $scope.$watch('email', function(value, oldValue) {
-
-        $scope.warning.contact = String(value);
-
+    $scope.$watch('data.email', function(value, oldValue, scope) {
+      $scope.warning.contact = String(value);
     });
 
 })
