@@ -3,8 +3,15 @@ angular.module('starter.controllers', [])
 .controller('DashCtrl', function($scope, $state, WarningService) {
 
   $scope.warning = {
-    message: '1',
-    id_contact_type: 3
+    id_contact_type: 3,
+    browser: "android",
+    operating_system: "android",
+    device: "android",
+    raw: "android",
+    warning_resp: {},
+    enableName: false,
+    ip: "android",
+    lang_key: "pt-br"
   };
 
   var listContactType = WarningService.getContactTypes();
@@ -15,7 +22,7 @@ angular.module('starter.controllers', [])
     }
   });
 
-  var listMessage = WarningService.getMessages('pt-br');
+  var listMessage = WarningService.getMessages($scope.warning.lang_key);
   listMessage.then(function(result) {
     if (result) {
 		    $scope.messages = result;
@@ -70,7 +77,26 @@ angular.module('starter.controllers', [])
 				break;
 
 			}
-		}
+		};
+
+    $scope.$watch('sms', function(value, oldValue) {
+
+
+        $scope.warning.contact = String(value);
+
+    });
+
+    $scope.$watch('whatsapp', function(value, oldValue) {
+
+        $scope.warning.contact = String(value);
+
+    });
+
+    $scope.$watch('email', function(value, oldValue) {
+
+        $scope.warning.contact = String(value);
+
+    });
 
 })
 
