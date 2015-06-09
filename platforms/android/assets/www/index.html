@@ -1,160 +1,41 @@
 <!DOCTYPE html>
-<!--
-    Copyright (c) 2012-2014 Adobe Systems Incorporated. All rights reserved.
-
-    Licensed to the Apache Software Foundation (ASF) under one
-    or more contributor license agreements.  See the NOTICE file
-    distributed with this work for additional information
-    regarding copyright ownership.  The ASF licenses this file
-    to you under the Apache License, Version 2.0 (the
-    "License"); you may not use this file except in compliance
-    with the License.  You may obtain a copy of the License at
-
-    http://www.apache.org/licenses/LICENSE-2.0
-
-    Unless required by applicable law or agreed to in writing,
-    software distributed under the License is distributed on an
-    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-     KIND, either express or implied.  See the License for the
-    specific language governing permissions and limitations
-    under the License.
--->
 <html>
-    <head>
-        <meta charset="utf-8" />
-        <meta name="format-detection" content="telephone=no" />
-        <meta name="msapplication-tap-highlight" content="no" />
-        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
-        <meta name="viewport" content="initial-scale=1, maximum-scale=1">
-        <link rel="stylesheet" type="text/css" href="css/index.css" />
-        <link rel="stylesheet" type="text/css" href="css/libs/jquery.mobile-1.4.5.min.css" />
-        <title>Warn a Broda</title>
-    </head>
-    <body>
-        <div data-role="page" id = "main-page">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title></title>
 
-          <div data-role="tabs" id="tabs">
+    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
 
-          <div data-role="header">
-            <h1 style="text-align:left; margin-left:10px;">Warn a Broda</h1>
-            <a href="#options" class="ui-btn ui-btn-right ui-icon-bars ui-btn-icon-notext ui-corner-all">No text</a>
-            <div data-role="navbar" id="navbar">
-              <ul>
-                <li><a href="index.html#tab2" >Conversas</a></li>
-                <li><a href="index.html#tab1" class="ui-btn-active home">Home</a></li>
-                <li><a href="index.html#tab3" >Contatos</a></li>
-              </ul>
-            </div><!-- /navbar -->
-          </div>
+    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+    <link href="css/ionic.app.css" rel="stylesheet">
+    -->
 
-          <div role="main" class="ui-content">
+    <!-- ionic/angularjs js -->
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
 
-            <div id="tab1">
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="cordova.js"></script>
 
-              <img src="img/logo-warnabroda.png" class="displayed"  />
-
-              <form id="warnForm" action="http://Xispe-PC:3000/warns/" method="post">
-
-                <div id="output_warn"></div>
-
-                <div id="output_warn_bies"></div>
-
-                <div id="div_email" style="overflow:hidden;">
-                    <label for="email">Text input:</label>
-                    <input type="text" name="email" id="email" value="" placeholder="Ex: warnabroda@gmail.com">
-                </div>
-
-                <div id="div_tel" style="overflow:hidden;">
-                    <label for="tel">Contato:</label>
-                    <input type="tel" name="tel" id="tel" value="" placeholder="(11) 96123-4567">
-                </div>
-
-                <input type="submit" data-icon="check" value="AVISA LÁ" data-wrapper-class="green-btn">
-              </form>
-            </div>
-            <div id="tab2">
-              <div id="output_emails"></div>
-            </div>
-            <div id="tab3">
-              <div id="output_contacts"></div>
-            </div>
-
-          </div>
-
-          </div>
-
-          <div data-role="footer">
-          </div><!-- /footer -->
-        </div>
-
-        <div data-role="page" id="options">
-
-          <div data-role="header">
-            <h1 style="text-align:left; margin-left:10px;">Warn a Broda</h1>
-            <a href="#main-page" class="ui-btn ui-btn-right ui-icon-carat-l ui-btn-icon-notext ui-corner-all back-home">No text</a>
-          </div>
-
-          <div role="main" class="ui-content">
-            <fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
-              <legend>Language:</legend>
-                  <input type="radio" name="language" id="language-c" value="pt-br" checked="checked">
-                  <label for="language-c">Português</label>
-                  <input type="radio" name="language" id="language-d" value="en">
-                  <label for="language-d">Inglês</label>
-                  <input type="radio" name="language" id="language-e" value="es">
-                  <label for="language-e">Espanhol</label>
-          </fieldset>
-        	</div><!-- /content -->
-
-        </div>
-
-
-        <script type="text/javascript" src="js/libs/jquery-1.11.3.min.js"></script>
-        <script type="text/javascript" src="js/libs/jquery.mobile-1.4.5.min.js"></script>
-        <script type="text/javascript" src="js/libs/ractive.min.js"></script>
-        <script type="text/javascript" src="cordova.js"></script>
-        <script type="text/javascript" src="js/warns.js"></script>
-        <script type="text/javascript" src="js/env.js"></script>
-        <script type="text/javascript" src="js/network_information.js"></script>
-        <script type="text/javascript" src="js/ajax.js"></script>
-        <script type="text/javascript" src="js/ractive_componentes.js"></script>
-        <script type="text/javascript" src="js/index.js"></script>
-
-        <script id='template_li_contacts' type='text/ractive'>
-          <ul id="con" data-role="listview">
-            {{#each contacts_list}}
-              {{#if phoneNumbers != null}}
-                <li><a href="#" id="{{id}}" on-click='activate' name="{{displayName}}" tel='{{#each phoneNumbers}} {{#if type == "mobile"}} {{value}} {{/if}} {{/each}}'>{{displayName}} |  {{#each phoneNumbers}} {{#if type == "mobile"}} Tel: {{value}} Tipo: {{type}} {{/if}} {{/each}} | {{type}} </a></li>
-              {{/if}}
-            {{/each}}
-          </ul>
-        </script>
-        <script id='template_warns' type='text/ractive'>
-          <label for="warn" class="select">Warn</label>
-          <select name="warn" id="warn">
-              <option value="?" selected="selected"></option>
-              {{#each warns_list}}
-                <option value="{{id}}">{{name}}</option>
-              {{/each}}
-          </select>
-        </script>
-        <script id='template_emails' type='text/ractive'>
-          E-mail
-          {{#each contacts_list}}
-            <div> {{#each emails}} {{value}} | {{/each}}</div>
-          {{/each}}
-        </script>
-        <script id='template_warn_bies' type='text/ractive'>
-          <fieldset data-role="controlgroup">
-            <legend>Warn via:</legend>
-            {{#each warn_bies_list}}
-              <input type="radio" name="warn_by" id="warn_by_{{id}}" value="{{id}}" {{#if checked}} checked="checked" {{/if}}/>
-              <label for="warn_by_{{id}}">{{name}}</label>
-            {{/each}}
-          </fieldset>
-        </script>
-        <script type="text/javascript">
-            app.initialize();
-        </script>
-    </body>
+    <!-- your app's js -->
+    <script src="js/app.js"></script>
+    <script src="js/controllers.js"></script>
+    <script src="js/services.js"></script>
+  </head>
+  <body ng-app="starter" class="platform-android platform-cordova platform-webview">
+    <!--
+      The nav bar that will be updated as we navigate between views.
+    -->
+    <ion-nav-bar class="bar-stable">
+      <ion-nav-back-button>
+      </ion-nav-back-button>
+    </ion-nav-bar>
+    <!--
+      The views will be rendered in the <ion-nav-view> directive below
+      Templates are in the /templates folder (but you could also
+      have templates inline in this html file if you'd like).
+    -->
+    <ion-nav-view></ion-nav-view>
+  </body>
 </html>
