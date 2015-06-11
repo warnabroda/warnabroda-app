@@ -1,0 +1,3 @@
+[submodule "www/i18n"]
+	path = www/i18n
+	url = git@gitlab.com:warnabroda/i18n.git
