@@ -4,12 +4,11 @@
 
       <label class="item item-input item-select">
        <div class="input-label">
-         Leanguage
+         {{ 'warning.lang_key' | translate }}
        </div>
-       <select ng-model="settings.lang_key">
-         <option>en</option>
-         <option selected>pt-br</option>
-         <option>es</option>
+
+
+       <select ng-model="settings.lang_key" ng-options="item.id as item.label for item in languages">
        </select>
     </label>
 

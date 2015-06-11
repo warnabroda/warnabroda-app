@@ -90,4 +90,19 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
   $translateProvider.preferredLanguage("pt-br");
   $translateProvider.fallbackLanguage("pt-br");
 
-});
+})
+
+.constant('LANGUAGES', [
+  {
+    id: 'en',
+    label: 'English'
+  },
+  {
+    id: 'pt-br',
+    label: 'Português - Brasil'
+  },
+  {
+    id: 'es',
+    label: 'Español'
+  }
+]);
