@@ -118,8 +118,14 @@ angular.module('starter.controllers', [])
   $scope.chat = Chats.get($stateParams.chatId);
 })
 
-.controller('AccountCtrl', function($scope) {
+.controller('AccountCtrl', function($scope, $translate) {
+  
   $scope.settings = {
     lang_key: 'pt-br'
   };
+
+  $scope.$watch('settings.lang_key', function(value, oldValue, scope) {
+    $translate.use(String(value));
+  });
+
 });
