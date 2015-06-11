@@ -6,10 +6,10 @@
 
         <label class="item item-input item-select">
          <div class="input-label">
-           Contact Type
+           {{ 'warning.warn' | translate }}
          </div>
          <select ng-model="warning.id_message" ng-options="m.id as m.name for m in messages">
-           <option value="">-- choose one --</option>
+           <option value=""></option>
          </select>
        </label>
 
@@ -21,21 +21,21 @@
 
         <div ng-show="warning.id_contact_type === 1">
           <label class="item item-input">
-            <span class="input-label">Email</span>
+            <span class="input-label">{{ 'warning.contact' | translate }}</span>
             <input type="email" ng-model="data.email" placeholder="Ex: warnabroda@gmail.com">
           </label>
         </div>
 
         <div ng-show="warning.id_contact_type === 2">
           <label class="item item-input">
-            <span class="input-label">Telephone</span>
+            <span class="input-label">{{ 'warning.contact' | translate }}</span>
             <input type="tel" ng-model="data.sms" placeholder="+55 (98) 9916-0205">
           </label>
         </div>
 
         <div ng-show="warning.id_contact_type === 3">
           <label class="item item-input">
-            <span class="input-label">Telephone</span>
+            <span class="input-label">{{ 'warning.contact' | translate }}</span>
             <input type="tel" ng-model="data.whatsapp" placeholder="+55 (98) 9916-0205">
           </label>
         </div>
