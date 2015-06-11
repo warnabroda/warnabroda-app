@@ -1,6 +1,6 @@
 angular.module('starter.controllers', [])
 
-.controller('DashCtrl', function($scope, $state, WarningService) {
+.controller('DashCtrl', function($scope, $rootScope, $state, WarningService) {
 
   $scope.warning = {
     id_contact_type: 3,
@@ -23,7 +23,7 @@ angular.module('starter.controllers', [])
   var listContactType = WarningService.getContactTypes();
   listContactType.then(function(result) {
     if (result) {
-		    $scope.contact_types = result;
+		    $rootScope.contact_types = result;
 		    //$scope.warning.id_message = $routeParams.id_message*1;
     }
   });
@@ -31,7 +31,7 @@ angular.module('starter.controllers', [])
   var listMessage = WarningService.getMessages($scope.warning.lang_key);
   listMessage.then(function(result) {
     if (result) {
-		    $scope.messages = result;
+		    $rootScope.messages = result;
 		    //$scope.warning.id_message = $routeParams.id_message*1;
     }
   });
@@ -96,7 +96,6 @@ angular.module('starter.controllers', [])
     $scope.$watch('data.email', function(value, oldValue, scope) {
       $scope.warning.contact = String(value);
     });
-
 })
 
 .controller('ChatsCtrl', function($scope, Chats) {
@@ -118,14 +117,22 @@ angular.module('starter.controllers', [])
   $scope.chat = Chats.get($stateParams.chatId);
 })
 
-.controller('AccountCtrl', function($scope, $translate) {
-  
+.controller('AccountCtrl', function($scope, $rootScope, $translate, WarningService) {
+
   $scope.settings = {
     lang_key: 'pt-br'
   };
 
   $scope.$watch('settings.lang_key', function(value, oldValue, scope) {
-    $translate.use(String(value));
+    var lang_key = String(value);
+    $translate.use(lang_key);
+    var listMessage = WarningService.getMessages(lang_key);
+    listMessage.then(function(result) {
+      if (result) {
+          $rootScope.messages = result;
+          //$scope.warning.id_message = $routeParams.id_message*1;
+      }
+    });
   });
 
 });
