@@ -48,6 +48,37 @@ angular.module('starter.services', [])
     }
   };
 })
+.factory('contact_service', function() {
+
+  var pns = [
+    { type: 'work',   value: '212-555-1234', pref: false },
+    { type: 'mobile', value: '917-555-5432', pref: true },
+    { type: 'home',   value: '203-555-7890', pref: false }
+  ];
+  var ems = [
+    { type: 'work',   value: 'work@teste.com.br', pref: false },
+    { type: 'mobile', value: 'mobile@teste.com.br', pref: true },
+    { type: 'home',   value: 'home@teste.com.br', pref: false }
+  ];
+  var contacts = [
+    {id: 1, displayName: "teste",  phoneNumbers :pns, emails: ems, face: 'https://pbs.twimg.com/profile_images/514549811765211136/9SgAuHeY.png' },
+    {id: 2, displayName: "teste 2",  phoneNumbers :pns, emails: ems, face: 'https://pbs.twimg.com/profile_images/514549811765211136/9SgAuHeY.png'  }
+  ];
+
+  return {
+    all : function() {
+      return contacts;
+    },
+    find : function(contact_id) {
+      for (var i = 0; i < contacts.length; i++) {
+        if (contacts[i].id === parseInt(contact_id)) {
+          return contacts[i];
+        }
+      }
+      return null;
+    }
+  }
+})
 .factory('WarningService', function ($q, $http) {
 	return {
 		getMessages : function(language) {

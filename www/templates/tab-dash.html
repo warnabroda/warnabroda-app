@@ -1,43 +1,82 @@
-<ion-view view-title="Dashboard">
+<ion-view view-title="Dashboard" hide-nav-bar="true">
+
+<div class="bar bar-header" ng-show="warning.id_contact_type === 1">
+  <button class="button button-icon icon ion-navicon"></button>
+  <div class="h1 title">{{ 'warning.title' | translate }}</div>
+  <button class="button button-clear button-positive">Edit</button>
+</div>
+
+
+<div class="bar bar-header item-input-inset" ng-show="warning.id_contact_type === 3">
+  <label class="item-input-wrapper">
+    <i class="icon ion-ios-search placeholder-icon"></i>
+    <input type="search" placeholder="Search">
+  </label>
+  <button class="button button-clear">
+    Cancel
+  </button>
+</div>
+
+
   <ion-content class="padding">
+    
     <div class="list">
 
       <form name="form" role="form" novalidate ng-submit="send()">
 
-        <label class="item item-input item-select">
-         <div class="input-label">
-           {{ 'warning.warn' | translate }}
+        
+        <div class="row">
+          <div class="col"></div>
+          <div class="col col-50"><img ng-src="img/logo-fundo-transparente.png" width="100%" /></div>
+          <div class="col"></div>
+        </div>
+
+        <div class="row">
+          <div class="col">
+            <label class="item item-input item-select">
+             <div class="input-label">
+               {{ 'warning.warn' | translate }}
+             </div>
+             <select ng-model="warning.id_message" ng-options="m.id as m.name for m in messages">
+               <option value=""></option>
+             </select>
+           </label>
          </div>
-         <select ng-model="warning.id_message" ng-options="m.id as m.name for m in messages">
-           <option value=""></option>
-         </select>
-       </label>
+       </div>
 
-        <ion-radio ng-repeat="contact_type in contact_types"
-                   ng-value="contact_type.id"
-                   ng-model="warning.id_contact_type">
-          {{ contact_type.name }}
-        </ion-radio>
-
-        <div ng-show="warning.id_contact_type === 1">
-          <label class="item item-input">
-            <span class="input-label">{{ 'warning.contact' | translate }}</span>
-            <input type="email" ng-model="data.email" placeholder="Ex: warnabroda@gmail.com">
-          </label>
+       <div class="row">
+         <div class="col">
+            <ion-radio ng-repeat="contact_type in contact_types"
+                       ng-value="contact_type.id"
+                       ng-model="warning.id_contact_type">
+              {{ contact_type.name }}
+            </ion-radio>
+          </div>
         </div>
 
-        <div ng-show="warning.id_contact_type === 2">
-          <label class="item item-input">
-            <span class="input-label">{{ 'warning.contact' | translate }}</span>
-            <input type="tel" ng-model="data.sms" placeholder="+55 (98) 9916-0205">
-          </label>
-        </div>
+        <div class="row">
+          <div class="col">
+            <div ng-show="warning.id_contact_type === 1">
+              <label class="item item-input">
+                <span class="input-label">{{ 'warning.contact' | translate }}</span>
+                <input type="email" ng-model="data.email" placeholder="Ex: warnabroda@gmail.com">
+              </label>
+            </div>
 
-        <div ng-show="warning.id_contact_type === 3">
-          <label class="item item-input">
-            <span class="input-label">{{ 'warning.contact' | translate }}</span>
-            <input type="tel" ng-model="data.whatsapp" placeholder="+55 (98) 9916-0205">
-          </label>
+            <div ng-show="warning.id_contact_type === 2">
+              <label class="item item-input">
+                <span class="input-label">{{ 'warning.contact' | translate }}</span>
+                <input type="tel" ng-model="data.sms" placeholder="+55 (98) 9916-0205">
+              </label>
+            </div>
+
+            <div ng-show="warning.id_contact_type === 3">
+              <label class="item item-input">
+                <span class="input-label">{{ 'warning.contact' | translate }}</span>
+                <input type="tel" ng-model="data.whatsapp" placeholder="+55 (98) 9916-0205">
+              </label>
+            </div>
+          </div>
         </div>
 
         <button type="submit" ng-disabled="form.$invalid || isPhoneNumberIlegal()" class="button button-block button-positive">

@@ -1,6 +1,8 @@
 angular.module('starter.controllers', [])
 
-.controller('DashCtrl', function($scope, $rootScope, $state, WarningService) {
+.controller('DashCtrl', function($scope, $stateParams, $rootScope, $state, WarningService, contact_service) {
+
+  var contact = contact_service.find($stateParams.contact_id);
 
   $scope.warning = {
     id_contact_type: 3,
@@ -14,11 +16,19 @@ angular.module('starter.controllers', [])
     lang_key: "pt-br"
   };
 
-  $scope.data = {
-    sms: "",
-    whatsapp: "",
-    email: ""
-  };
+  if (contact == null) {
+    $scope.data = {
+      sms: "",
+      whatsapp: "",
+      email: "" 
+    };
+  } else {
+    $scope.data = {
+      sms: contact.phoneNumbers[0].value,
+      whatsapp: contact.phoneNumbers[0].value,
+      email: contact.emails[0].value
+    };
+  }  
 
   var listContactType = WarningService.getContactTypes();
   listContactType.then(function(result) {
@@ -115,6 +125,10 @@ angular.module('starter.controllers', [])
 
 .controller('ChatDetailCtrl', function($scope, $stateParams, Chats) {
   $scope.chat = Chats.get($stateParams.chatId);
+})
+
+.controller('ContactsCtrl', function($scope, $stateParams, contact_service) {
+  $scope.contacts = contact_service.all();
 })
 
 .controller('AccountCtrl', function($scope, $rootScope, $translate, LANGUAGES, WarningService) {
