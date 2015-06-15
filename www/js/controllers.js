@@ -16,18 +16,26 @@ angular.module('starter.controllers', [])
     lang_key: "pt-br"
   };
 
+  $scope.data = {
+    do_find: false
+  };
+
+  $scope.click_edit = function() {
+    $scope.data.do_find = true;
+  };
+
+  $scope.click_cancel = function() {
+    $scope.data.do_find = false;
+  };
+
   if (contact == null) {
-    $scope.data = {
-      sms: "",
-      whatsapp: "",
-      email: "" 
-    };
+      $scope.data.sms = "";
+      $scope.data.whatsapp = "";
+      $scope.data.email = "";
   } else {
-    $scope.data = {
-      sms: contact.phoneNumbers[0].value,
-      whatsapp: contact.phoneNumbers[0].value,
-      email: contact.emails[0].value
-    };
+      $scope.data.sms = contact.phoneNumbers[0].value,
+      $scope.data.whatsapp = contact.phoneNumbers[0].value,
+      $scope.data.email = contact.emails[0].value
   }  
 
   var listContactType = WarningService.getContactTypes();
@@ -45,7 +53,6 @@ angular.module('starter.controllers', [])
 		    //$scope.warning.id_message = $routeParams.id_message*1;
     }
   });
-
 
   $scope.send = function(){
 
@@ -128,7 +135,31 @@ angular.module('starter.controllers', [])
 })
 
 .controller('ContactsCtrl', function($scope, $stateParams, contact_service) {
-  $scope.contacts = contact_service.all();
+
+
+  $scope.data = {
+    do_find: false,
+    search: ""
+  };
+
+  $scope.click_edit = function() {
+    $scope.data.do_find = true;
+  };
+
+  $scope.click_cancel = function() {
+    $scope.data.do_find = false;
+    $scope.data.search = "";
+  };
+
+  $scope.$watch('data.search', function(value, oldValue, scope) {
+    if ( String(value) != "" ) {
+      $scope.contacts = contact_service.find_by_email(String(value));
+    } else {
+      $scope.contacts = contact_service.all();
+    }
+  });
+
+
 })
 
 .controller('AccountCtrl', function($scope, $rootScope, $translate, LANGUAGES, WarningService) {

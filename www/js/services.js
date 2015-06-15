@@ -56,12 +56,12 @@ angular.module('starter.services', [])
     { type: 'home',   value: '203-555-7890', pref: false }
   ];
   var ems = [
-    { type: 'work',   value: 'work@teste.com.br', pref: false },
+    { type: 'work',   value: 'xptavares@gmail.com', pref: false },
     { type: 'mobile', value: 'mobile@teste.com.br', pref: true },
     { type: 'home',   value: 'home@teste.com.br', pref: false }
   ];
   var contacts = [
-    {id: 1, displayName: "teste",  phoneNumbers :pns, emails: ems, face: 'https://pbs.twimg.com/profile_images/514549811765211136/9SgAuHeY.png' },
+    {id: 1, displayName: "Alexandre Tavares",  phoneNumbers :pns, emails: ems, face: 'https://pbs.twimg.com/profile_images/514549811765211136/9SgAuHeY.png' },
     {id: 2, displayName: "teste 2",  phoneNumbers :pns, emails: ems, face: 'https://pbs.twimg.com/profile_images/514549811765211136/9SgAuHeY.png'  }
   ];
 
@@ -76,6 +76,9 @@ angular.module('starter.services', [])
         }
       }
       return null;
+    },
+    find_by_email: function(email) {
+      
     }
   }
 })
