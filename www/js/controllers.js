@@ -136,7 +136,6 @@ angular.module('starter.controllers', [])
 
 .controller('ContactsCtrl', function($scope, $stateParams, contact_service) {
 
-
   $scope.data = {
     do_find: false,
     search: ""
@@ -157,6 +156,7 @@ angular.module('starter.controllers', [])
     } else {
       $scope.contacts = contact_service.all();
     }
+    console.log($scope.contacts);
   });
 
 

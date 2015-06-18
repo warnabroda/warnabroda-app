@@ -5,7 +5,14 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', 'pascalprecht.translate'])
+
+var underscore = angular.module('underscore', []);
+underscore.factory('_', ['$window', function() {
+  return $window._; // assumes underscore has already been loaded on the page
+}]);
+
+
+angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', 'pascalprecht.translate', 'underscore'])
 .constant('ApiEndpoint', {
   url: 'http://localhost:8100/warnabroda'
 })

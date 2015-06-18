@@ -70,15 +70,11 @@ angular.module('starter.services', [])
       return contacts;
     },
     find : function(contact_id) {
-      for (var i = 0; i < contacts.length; i++) {
-        if (contacts[i].id === parseInt(contact_id)) {
-          return contacts[i];
-        }
-      }
-      return null;
+      return _.find(contacts, function(c){ return c.id === parseInt(contact_id) });
     },
     find_by_email: function(email) {
-      
+      return _.reject([ _.find(contacts, function(c){ 
+        return c.displayName === email }) ], function(num){ return typeof(num) !== "undefined"; });
     }
   }
 })

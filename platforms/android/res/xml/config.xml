@@ -26,14 +26,14 @@
     <splash density="port-xhdpi" src="resources/android/splash/drawable-port-xhdpi-screen.png" />
     <splash density="port-xxhdpi" src="resources/android/splash/drawable-port-xxhdpi-screen.png" />
     <splash density="port-xxxhdpi" src="resources/android/splash/drawable-port-xxxhdpi-screen.png" />
-    <name>myApp</name>
+    <name>warnabroda</name>
     <description>
         An Ionic Framework and Cordova project.
     </description>
     <author email="hi@ionicframework" href="http://ionicframework.com/">
       Ionic Framework Team
     </author>
-    <content original-src="index.html" src="http://192.168.1.181:8100" />
+    <content original-src="index.html" src="http://192.168.1.181:8101" />
     <access origin="*" />
     <preference name="webviewbounce" value="false" />
     <preference name="UIWebViewBounce" value="false" />
