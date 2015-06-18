@@ -48,7 +48,16 @@ angular.module('starter.services', [])
     }
   };
 })
-.factory('contact_service', function() {
+.factory('contact_service', ['$q', function($q) {
+
+  var formatContact = function(contact) {
+      return {
+          "displayName"   : contact.name.formatted || contact.name.givenName + " " + contact.name.familyName || "Mystery Person",
+          "emails"        : contact.emails || [],
+          "phones"        : contact.phoneNumbers || [],
+          "photos"        : contact.photos || []
+      };
+  };
 
   var pns = [
     { type: 'work',   value: '212-555-1234', pref: false },
@@ -65,19 +74,60 @@ angular.module('starter.services', [])
     {id: 2, displayName: "teste 2",  phoneNumbers :pns, emails: ems, face: 'https://pbs.twimg.com/profile_images/514549811765211136/9SgAuHeY.png'  }
   ];
 
+  var pickContact = function() {
+
+      var deferred = $q.defer();
+
+      if(navigator && navigator.contacts) {
+
+          navigator.contacts.pickContact(function(contact){
+
+              deferred.resolve( formatContact(contact) );
+          });
+
+      } else {
+          deferred.reject("Bummer.  No contacts in desktop browser");
+      }
+
+      return deferred.promise;
+  };
+
+  var onDeviceReady = function() {
+    // find all contacts
+    var options = new ContactFindOptions();
+    options.filter = "";
+    options.multiple = true;
+    var fields = ["displayName", "name", "addresses", "emails"];
+    navigator.contacts.find(fields, onSuccess, onError, options);
+  };
+
+  var onError = function(contactError) {
+    console.log(contactError);
+  };
+
+  var onSuccess = function(contacts) {
+    _.each(contacts, function(contact) {
+       contacts.push( formatContact(contact) );
+    });
+  };
+
+  onDeviceReady();
+
   return {
-    all : function() {
-      return contacts;
-    },
-    find : function(contact_id) {
-      return _.find(contacts, function(c){ return c.id === parseInt(contact_id) });
-    },
-    find_by_email: function(email) {
-      return _.reject([ _.find(contacts, function(c){ 
-        return c.displayName === email }) ], function(num){ return typeof(num) !== "undefined"; });
-    }
-  }
-})
+      pickContact : pickContact,
+      all : function() {
+        return contacts;
+      },
+      find : function(contact_id) {
+        return _.find(contacts, function(c){ return c.id === parseInt(contact_id) });
+      },
+      find_by_email: function(email) {
+        return _.reject([ _.find(contacts, function(c){ 
+          return c.displayName === email }) ], function(num){ return typeof(num) !== "undefined"; });
+      }
+  };
+}])
+
 .factory('WarningService', function ($q, $http) {
 	return {
 		getMessages : function(language) {
