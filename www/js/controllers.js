@@ -1,15 +1,31 @@
 angular.module('starter.controllers', [])
 
-.controller('DashCtrl', function($scope, $stateParams, $rootScope, $state, WarningService, contact_service) {
+.controller('DashCtrl', function($scope, $stateParams, $rootScope, $state, $cordovaContacts, WarningService) {
 
-  var contact = contact_service.find($stateParams.contact_id);
+  var deviceInformation = ionic.Platform.device();
+  var currentPlatform = ionic.Platform.platform();
+  var contact = null;//contact_service.find();
+
+  //document.addEventListener("deviceready", function () {
+  //  //var options = {
+  //  //  id: $stateParams.contact_id
+  //  //};
+  //  function onSuccess(c) {
+  //    console.log(c);
+  //    contact = c;
+  //  };
+  //  function onError(contactError) {
+  //    console.log(contactError);
+  //  };
+  //  $cordovaContacts.pickContact().then(onSuccess);
+  //}, false);
 
   $scope.warning = {
     id_contact_type: 3,
-    browser: "android",
-    operating_system: "android",
-    device: "android",
-    raw: "android",
+    browser: "warnabroda app: " + currentPlatform,
+    operating_system: currentPlatform,
+    device: currentPlatform,
+    raw: "warnabroda app: " + currentPlatform,
     warning_resp: {},
     enableName: false,
     ip: "android",
@@ -134,7 +150,7 @@ angular.module('starter.controllers', [])
   $scope.chat = Chats.get($stateParams.chatId);
 })
 
-.controller('ContactsCtrl', function($scope, $stateParams, contact_service) {
+.controller('ContactsCtrl', function($scope, $stateParams, $cordovaContacts) {
 
   $scope.data = {
     do_find: false,
@@ -151,12 +167,28 @@ angular.module('starter.controllers', [])
   };
 
   $scope.$watch('data.search', function(value, oldValue, scope) {
+    //if ( String(value) != "" ) {
+    //  $scope.contacts = contact_service.find_by_email(String(value));
+    //} else {
+    //  $scope.contacts = contact_service.all();
+    //}
+    //console.log($scope.contacts);
+    $scope.contacts = [];
+    function onSuccess(contacts) {
+      for (var i = 0; i < contacts.length; i++) {
+        var contact = contacts[i];
+        $scope.contacts.push(contact);
+      }
+    };
+    function onError(contactError) {
+      alert(contactError);
+    };
+    var options = {};
+    options.multiple = true;
     if ( String(value) != "" ) {
-      $scope.contacts = contact_service.find_by_email(String(value));
-    } else {
-      $scope.contacts = contact_service.all();
-    }
-    console.log($scope.contacts);
+       options.filter = String(value);
+    } 
+    $cordovaContacts.find(options).then(onSuccess, onError);
   });
 
 
