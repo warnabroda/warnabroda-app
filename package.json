@@ -17,7 +17,8 @@
   },
   "cordovaPlugins": [
     "cordova-plugin-whitelist",
-    "cordova-plugin-contacts"
+    "cordova-plugin-contacts",
+    "br.com.dtmtec.plugins.carrier"
   ],
   "cordovaPlatforms": [
     "android"
