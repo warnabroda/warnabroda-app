@@ -12,7 +12,7 @@ underscore.factory('_', ['$window', function() {
 }]);
 
 
-angular.module('starter', ['ionic', 'ngCordova', 'starter.controllers', 'starter.services', 'pascalprecht.translate', 'underscore'])
+angular.module('starter', ['ionic', 'ngCordova', 'ui.router', 'starter.controllers', 'starter.services', 'pascalprecht.translate', 'underscore'])
 .constant('ApiEndpoint', {
   url: 'http://localhost:8100/warnabroda'
 })
@@ -133,4 +133,6 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.controllers', 'starter
     id: 'es',
     label: 'Español'
   }
-]);
+])
+
+.constant('COUNTRIES', countries);

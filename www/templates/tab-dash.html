@@ -4,6 +4,7 @@
     <button class="button button-icon icon ion-navicon"></button>
     <div class="h1 title">{{ 'warning.title' | translate }}</div>
     <button class="button button-clear button-positive" ng-click="click_edit()">Edit</button>
+    <button class="button button-icon icon ion-navicon" ng-click="goAcc()"></button>
   </div>
 
 
@@ -37,7 +38,7 @@
              <div class="input-label">
                {{ 'warning.warn' | translate }}
              </div>
-             <select ng-model="warning.id_message" ng-options="m.id as m.name for m in messages">
+             <select ng-model="warning.id_message" ng-options="m.id as m.name for m in messages" required>
                <option value=""></option>
              </select>
            </label>

@@ -6,13 +6,18 @@
        <div class="input-label">
          {{ 'warning.lang_key' | translate }}
        </div>
-
-
        <select ng-model="settings.lang_key" ng-options="item.id as item.label for item in languages">
        </select>
-    </label>
+      </label>
 
-  </label>
+      <label class="item item-input item-select">
+       <div class="input-label">
+         {{ 'warning.countries' | translate }}
+       </div>
+       <select ng-model="settings.dial_code" ng-options="item.dial_code as item.name for item in countries">
+       </select>
+      </label>
+
     </ion-list>
   </ion-content>
 </ion-view>

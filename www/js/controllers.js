@@ -129,6 +129,19 @@ angular.module('starter.controllers', [])
     $scope.$watch('data.email', function(value, oldValue, scope) {
       $scope.warning.contact = String(value);
     });
+
+    $scope.goAcc = function() {
+      $state.go('tab.account');
+    };
+
+    $scope.isPhoneNumberIlegal = function(){
+      if($scope.warning.id_contact_type === 1) {
+         return $scope.data.email == null;
+      } else if($scope.warning.id_contact_type === 2) {
+         return $scope.data.sms == null;
+      }
+      return $scope.data.whatsapp == null;
+    };
 })
 
 .controller('ChatsCtrl', function($scope, Chats) {
@@ -194,13 +207,16 @@ angular.module('starter.controllers', [])
 
 })
 
-.controller('AccountCtrl', function($scope, $rootScope, $translate, LANGUAGES, WarningService) {
+.controller('AccountCtrl', function($scope, $rootScope, $translate, LANGUAGES, COUNTRIES, WarningService) {
 
+  console.log("Acc ctr");
   $scope.settings = {
-    lang_key: 'pt-br'
+    lang_key: 'pt-br',
+    dial_code: '+55'
   };
 
   $scope.languages = LANGUAGES;
+  $scope.countries = COUNTRIES;
 
   $scope.$watch('settings.lang_key', function(value, oldValue, scope) {
     var lang_key = String(value);

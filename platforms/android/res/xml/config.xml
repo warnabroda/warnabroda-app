@@ -36,8 +36,9 @@
     <author email="hi@ionicframework" href="http://ionicframework.com/">
       Ionic Framework Team
     </author>
-    <content original-src="index.html" src="http://192.168.1.181:8100" />
+    <content original-src="index.html" src="http://10.0.0.109:8100" />
     <access origin="*" />
+    <allow-navigation href="http://*/*" />
     <preference name="webviewbounce" value="false" />
     <preference name="UIWebViewBounce" value="false" />
     <preference name="DisallowOverscroll" value="true" />
