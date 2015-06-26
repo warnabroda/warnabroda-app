@@ -22,8 +22,17 @@ angular.module('starter.controllers', [])
     do_find: false
   };
 
+  var format_contact = function(contact) {
+    $scope.data.sms = contact.phoneNumbers[0].value,
+    $scope.data.whatsapp = contact.phoneNumbers[0].value,
+    $scope.data.email = contact.emails[0].value
+  };
+
   $scope.click_edit = function() {
-    $scope.data.do_find = true;
+    function onSuccess(contact) {
+      format_contact(contact);
+    };
+    $cordovaContacts.pickContact().then(onSuccess);
   };
 
   $scope.click_cancel = function() {
@@ -31,13 +40,11 @@ angular.module('starter.controllers', [])
   };
 
   if (contact == null) {
-      $scope.data.sms = "";
-      $scope.data.whatsapp = "";
-      $scope.data.email = "";
+    $scope.data.sms = "";
+    $scope.data.whatsapp = "";
+    $scope.data.email = "";
   } else {
-      $scope.data.sms = contact.phoneNumbers[0].value,
-      $scope.data.whatsapp = contact.phoneNumbers[0].value,
-      $scope.data.email = contact.emails[0].value
+    format_contact(contact);
   }  
 
   var listContactType = WarningService.getContactTypes();
