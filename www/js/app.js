@@ -28,17 +28,6 @@ angular.module('starter', ['ionic', 'ngCordova', 'ui.router', 'starter.controlle
       // org.apache.cordova.statusbar required
       StatusBar.styleLightContent();
     }
-
-    var succ = function (data) {
-      console.log("carrierName: " + data['carrierName']);
-      console.log("countryCode: " + data['countryCode']);
-      console.log("mcc: " + data['mcc']);
-      console.log("mnc: " + data['mnc']);
-    }
-    var err = function () {
-      console.log('Error!');
-    }
-    window.plugins.carrier.getCarrierInfo(succ, err)
   });
 })
 

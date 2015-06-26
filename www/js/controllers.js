@@ -200,7 +200,7 @@ angular.module('starter.controllers', [])
 
 })
 
-.controller('AccountCtrl', function($scope, $rootScope, $translate, LANGUAGES, COUNTRIES, WarningService) {
+.controller('AccountCtrl', function($scope, $rootScope, $translate, LANGUAGES, COUNTRIES, WarningService, carrier_service) {
 
   $scope.settings = {
     lang_key: 'pt-br',

@@ -158,4 +158,44 @@ angular.module('starter.services', [])
             return deferred.promise;
 		}
   }
+})
+
+.factory('carrier_service', function($ionicPlatform) {
+
+  var carrierName = null;
+  var countryCode = null;
+  var mcc = null;
+  var mnc = null;
+  
+  $ionicPlatform.ready(function() {
+    var succ = function (data) {
+      console.log("carrierName: " + data['carrierName']);
+      console.log("countryCode: " + data['countryCode']);
+      console.log("mcc: " + data['mcc']);
+      console.log("mnc: " + data['mnc']);
+      carrierName = data['carrierName'];
+      countryCode = data['countryCode'];
+      mcc = data['mcc'];
+      mnc = data['mnc'];
+    }
+    var err = function () {
+      console.log('Error!');
+    }
+    window.plugins.carrier.getCarrierInfo(succ, err)
+  });
+
+  return {
+    carrierName: function() {
+      return carrierName;
+    },
+    countryCode: function() {
+      return countryCode;
+    },
+    mcc: function() {
+      return mcc;
+    },
+    mnc: function() {
+      return mnc;
+    }
+  };
 });
