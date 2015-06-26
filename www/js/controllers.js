@@ -6,20 +6,6 @@ angular.module('starter.controllers', [])
   var currentPlatform = ionic.Platform.platform();
   var contact = null;//contact_service.find();
 
-  //document.addEventListener("deviceready", function () {
-  //  //var options = {
-  //  //  id: $stateParams.contact_id
-  //  //};
-  //  function onSuccess(c) {
-  //    console.log(c);
-  //    contact = c;
-  //  };
-  //  function onError(contactError) {
-  //    console.log(contactError);
-  //  };
-  //  $cordovaContacts.pickContact().then(onSuccess);
-  //}, false);
-
   $scope.warning = {
     id_contact_type: 3,
     browser: "warnabroda app: " + currentPlatform,
@@ -209,7 +195,6 @@ angular.module('starter.controllers', [])
 
 .controller('AccountCtrl', function($scope, $rootScope, $translate, LANGUAGES, COUNTRIES, WarningService) {
 
-  console.log("Acc ctr");
   $scope.settings = {
     lang_key: 'pt-br',
     dial_code: '+55'
@@ -229,5 +214,9 @@ angular.module('starter.controllers', [])
       }
     });
   });
+
+  $scope.$watch('settings.dial_code', function(value, oldValue, scope) {
+      //console.log(String(value));
+    });
 
 });
