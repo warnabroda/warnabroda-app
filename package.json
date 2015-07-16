@@ -21,6 +21,7 @@
     "br.com.dtmtec.plugins.carrier"
   ],
   "cordovaPlatforms": [
-    "android"
+    "android",
+    "ios"
   ]
 }
